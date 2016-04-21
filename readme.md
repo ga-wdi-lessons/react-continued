@@ -285,10 +285,6 @@ What are some struggles you encountered when building out a more complex React a
 
 ---
 
-## Quiz Questions
-
----
-
 ## Resources
 
 * [Imperative vs. Declarative Javascript](http://www.tysoncadenhead.com/blog/the-state-of-javascript-a-shift-from-imperative-to-declarative#.VxgGxZMrKfQ)
