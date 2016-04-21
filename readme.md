@@ -91,7 +91,7 @@ So what is this "state"? The organization and flow of data in an application at 
 Let's think of states in terms of a game: Pokémon.
 
 <details>
-  <summary>**Q:** What can you say about the player when a new game starts?</summary>
+  <summary>What can you say about the player when a new game starts?</summary>
 
   > 0 Pokemon. We're stuck in Pallet Town (City #1). Professor Oak is around.
 
@@ -137,9 +137,9 @@ With the idea that state transitions are caused by events in mind...
 
 ## Exercise: React OMDB
 
-For this exercise, we are going to be building a React app from scratch that serve as a movie browser application, allowing users to enter a search term, and view results of movies via the OMDB api.
+For this exercise, we are going to build a React app from scratch that will serve as a movie browser application, allowing users to enter a search term, and view results of movies via the OMDB api.
 
-Please note, the desired outcome is for you to take a look at the solution and from there devise your own implementation. However, if follow along belong below for a step by step walkthrough of how to build out the demoed solution.
+The desired outcome is for you to take a look at the solution and from there devise your own implementation. We have also included a a step-by-step walkthrough of how to build out the demoed solution below.
 
 ---
 
@@ -183,26 +183,38 @@ To kick things off, let's add a HelloWorld component to make sure things are all
 - In your app directory create and configure your `index.js` file to render a HelloWorld component
 - Start Webpack and make sure everything is working
 
-**Q**. What dependency do we need to load in whenever we want to create a component definition?
+<details>
+  <summary> What dependency do we need to load in whenever we want to create a component definition?</summary>
 
-> A: React
+  > React
 
-**Q**. What method do we call on our `React` instance to define a component?
+</details>
 
-> A: `.createClass()`
+<details>
+  <summary> What method do we call on our `React` instance to define a component?</summary>
 
-**Q**. What is the one method that every React component must have defined?
+  > `.createClass()`
 
-> A: render
+</details>
 
-**Q**. What is the syntax for rendering an application's root element?
+<details>
+  <summary> What is the one method that every React component must have defined?</summary>
 
-```js
-ReactDOM.render(
-   <MyRootElement />, // some component
-   document.getElementById("app") // some div
- )
-```
+  > render
+
+</details>
+
+<details>
+  <summary> What is the syntax for rendering an application's root element?</summary>
+
+  ```js
+  ReactDOM.render(
+     <MyRootElement />, // some component
+     document.getElementById("app") // some div
+   )
+  ```
+
+</details>
 
 ---
 
@@ -216,13 +228,19 @@ Great, now that we know React is working, let's refactor that HelloWorld compone
 
 > **NOTE:** The solution separates components into different files. Each of these files `module.exports` the component definition. This is a good way or organizing a React application, but not the only way. You are welcome to keep all component definitions in a single `index.js` file as well.
 
-**Q**. Why do you think we have to use the `className` syntax when defining class attributes for our elements?
+<details>
+  <summary> Why do you think we have to use the `className` syntax when defining class attributes for our elements?</summary>
 
-> A: `class` is a protected keyword in React/JSX
+  > `class` is a protected keyword in React/JSX
 
-**Q** How would you summarize the Home's component's responsibility?
+</details>
 
-> A: This will be our application's root element, the parent in which we will nest the rest of our child components. In charge of render what the user sees on initial page load
+<details>
+  <summary>How would you summarize the Home's component's responsibility?</summary>
+
+  > A: This will be our application's root element, the parent in which we will nest the rest of our child components. In charge of render what the user sees on initial page load
+
+</details>
 
 **Bonus**: Add a logo and initial layout
 
@@ -253,26 +271,40 @@ Then...
 **Bonus**
 - Utilize `onChange` in your search element to set the state on every change equal to the value of the input
 
+<details>
+  <summary> What method do we need to define in order for our component's state to be set when it is first rendered?</summary>
 
-**Q**. What method do we need to define in order for our component's state to be set when it is first rendered?
+  > `getInitialState()`
 
-> A: `getInitialState()`
+</details>
 
-**Q**. What value(s) should we include in our Search component's initial state?
+<details>
+  <summary> What value(s) should we include in our Search component's initial state?</summary>
 
-> A: Search query.
+  > Search query.
 
-**Q**. What is an example of explicit state mutation in React?
+</details>
 
-> A: `this.setState()`
+<details>
+  <summary> What is an example of explicit state mutation in React?</summary>
 
-**Q**. How might we use / what is the importance of `onSubmit`?
+  > `this.setState()`
 
-> A: they are examples of built in event handlers that we must supply a listener callback function to
+</details>
 
-**Q**. Why do we have to prevent the default behavior of our form submission event in our handler?
+<details>
+  <summary> How might we use / what is the importance of `onSubmit`?</summary>
 
-> A: In order to prevent the event firing a page refresh and thus losing our app's state
+  > They are examples of built in event handlers that we must supply a listener callback function to
+
+</details>
+
+<details>
+  <summary> Why do we have to prevent the default behavior of our form submission event in our handler?</summary>
+
+  > In order to prevent the event firing a page refresh and thus losing our app's state
+
+</details>
 
 ---
 
@@ -300,14 +332,19 @@ Let's look at our Search component, right now, even without worrying about query
 - Load the file containing the Search component in the SearchContainer file
 - SearchContainer's `render` method should only render a Search component. SearchContainer's methods and query value (the search term) should be passed into Search via `.props`. [Reference this diff if you need help](https://github.com/ga-wdi-exercises/react-omdb/commit/fd5e170ca89424aac2501865d8de7e4ced9a0b7d)
 
-**Q**. What is our end goal in refactoring our Search components
+<details>
+  <summary> What is our end goal in refactoring our Search components</summary>
 
-> A: To make Search a purely presenter component, who's only job is to take data from props and render a view
+  > To make Search a purely presenter component, who's only job is to take data from props and render a view
 
-**Q**. What is the importance of the props passed down to our Search component?
+</details>
 
-> A: We are passing down functions to handle user input and when a user submits a search, as well as the actual user query
+<details>
+  <summary> What is the importance of the props passed down to our Search component?</summary>
 
+  > We are passing down functions to handle user input and when a user submits a search, as well as the actual user query
+
+</details>
 ---
 
 ### Prop Types
@@ -332,17 +369,26 @@ Let's add some PropTypes definitions to our Search component:
 >
 > **HINT:** PropTypes syntax can get a little weird. Functions are referred to as `func`, while booleans are `bool`.
 
-**Q**. What is adding PropTypes similar to the Rails world?  
+<details>
+  <summary>What is adding PropTypes similar to the Rails world?</summary>
 
-> A: Active Record validations
+  > Active Record validations
 
-**Q** How can you assure that a certain prop is passed down?
+</details>
 
-> A: By adding the `.isRequired` property to our type definitions
+<details>
+  <summary>How can you assure that a certain prop is passed down?</summary>
 
-**Q** What is another benefit we get as developers by adding PropTypes definitions to our components?
+  > By adding the `.isRequired` property to our type definitions
 
-> A: It adds a layer of documentation to our code. We can look at a component, view its render method to see the UI it will output, and then look at the PropTypes to see the data values in needs to render
+</details>
+
+<details>
+  <summary>What is another benefit we get as developers by adding PropTypes definitions to our components?</summary>
+
+  > It adds a layer of documentation to our code. We can look at a component, view its render method to see the UI it will output, and then look at the PropTypes to see the data values in needs to render
+
+</details>
 
 ---
 
@@ -359,21 +405,33 @@ Continuing to build on the theme of small achievable wins, let's start by only w
 - If a user has searched, instead of rendering the Search component, render a Results components for which the hard-coded movie data is passed in as `props`
 - Make the Home header link to root
 
-**Q.** What should the data type of the value that represents whether a user has searched or not be?
+<details>
+  <summary>What should the data type of the value that represents whether a user has searched or not be?</summary>
 
-> A: A boolean. Think of this as an "on-off" switch.
+  > A boolean. Think of this as an "on-off" switch.
 
-**Q.** What Javascript tools can you use to dynamically render different UI's from a component. In other words, how can I change what is rendered depending on whether the user has searched or not.
+</details>
 
-> A: By wrapping different return statements in a conditional block. If the user has searched, render this. If not, render that.
+<details>
+  <summary>What Javascript tools can you use to dynamically render different UI's from a component. In other words, how can I change what is rendered depending on whether the user has searched or not.</summary>
 
-**Q**. Where does `.map` come from?
+  > By wrapping different return statements in a conditional block. If the user has searched, render this. If not, render that.
 
-> A: it's a native method for collections in Javascript. It behaves exactly like the Ruby enumerable `.map`
+</details>
 
-**Q**. If you had to guess, what's the importance of supplying each individual result `item` with a `key` attribute?
+<details>
+  <summary> Where does `.map` come from?</summary>
 
-> A: This allows React to keep track of each unique dynamically render child element. The key is treated as the unique identifier and is important in how React  passes data to the child.
+  > It's a native method for collections in Javascript. It behaves exactly like the Ruby enumerable `.map`
+
+</details>
+
+<details>
+  <summary> If you had to guess, what's the importance of supplying each individual result `item` with a `key` attribute?</summary>
+
+  > This allows React to keep track of each unique dynamically render child element. The key is treated as the unique identifier and is important in how React  passes data to the child.
+
+</details>
 
 ---
 
@@ -398,17 +456,26 @@ Now that we can render hard-coded results...
 
 > **NOTE:** Make sure to look through the whole API JSON response. You're going to have to parse through it and save only the data you need.
 
-**Q**. What parsing of user input to do we need to account for in order to make a valid search query?
+<details>
+<summary> What parsing of user input to do we need to account for in order to make a valid search query?</summary>
 
-> A: It's a good idea to replace any white space characters with a "+" to help format a proper url
+  > It's a good idea to replace any white space characters with a "+" to help format a proper url
 
-**Q**. Why might it be a good idea to separate our code relating to API calls into a helpers file?
+</details>
 
-> A: It reduces the complexity of the components and we might want to reuse the functions we are defining in other components
+<details>
+  <summary> Why might it be a good idea to separate our code relating to API calls into a helpers file?</summary>
 
-**Q**. How might we handle bad response data such as no image found...?
+  > It reduces the complexity of the components and we might want to reuse the functions we are defining in other components
 
-> A: We can parse the initial response, check for bad inputs, and modify the data  to set a valid default, the return the new results
+</details>
+
+<details>
+  <summary> How might we handle bad response data such as no image found...?</summary>
+
+  > We can parse the initial response, check for bad inputs, and modify the data  to set a valid default, the return the new results
+
+</details>
 
 ---
 
@@ -446,7 +513,7 @@ To add the finishing touches to our application, let's take a stab at styling ou
 - Create a `styles` directory and make a file for your CSS rule definitions - this will be written in Javascript!
 - Load in that file in any component and then use that to apply inline styling
 
-**Q**. What are some tradeoffs for using inline-styles to style React components?
+**Q:** What are some tradeoffs for using inline-styles to style React components?
 
 ## Closing (10 minutes / 2:30)
 
