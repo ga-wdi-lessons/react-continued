@@ -40,7 +40,7 @@ Building in React is a fundamental shift from how we have developed previously. 
 
 A React component is built to expect an input and render a UI with it. More importantly, a (well-structured) component only receives data specific to its purpose. For example, our `Post` component from the blog example will only receive `title`, `author` and the like as inputs -- nothing else.
 
-While this doesn't sound too groundbreaking, it is very different from the OOP principles we've gotten used to. This is because React follows a more **functional** approach to programming. A component will never behave differently depending on what input is passed into it. In other words, in a React component, **the same input will always produce the same output**.
+While this doesn't sound too groundbreaking, it is very different from the OOP principles we've gotten used to. This is because React follows a more **functional** approach to programming. For React components under this approach, **the same input will always produce the same output**.
 
 You can build an app in a lot of ways, but if you want to look at some of the best practices, we can talk about what a component should be: **F.I.R.S.T.**
 
@@ -89,13 +89,20 @@ So we've talked about `.state` at a more granular level. But now we're asking wh
 So what is this "state"? The organization and flow of data in an application at any point in time.
 
 Let's think of states in terms of a game: Pokémon.
-* **Q:** What can you say about the player when a new game starts?
 
-> 0 Pokemon. We're stuck in Pallet Town (City #1). Professor Oak is around.
+<details>
+  <summary>**Q:** What can you say about the player when a new game starts?</summary>
 
-What about when the game ends?
+  > 0 Pokemon. We're stuck in Pallet Town (City #1). Professor Oak is around.
 
-> 150 Pokemon. 8 gym badges.
+</details>
+
+<details>
+  <summary>What about when the game ends?</summary>
+
+  > 150 Pokemon. 8 gym badges.
+
+</details>
 
 It's easy to think about this in terms of a game, because there is a clear idea of a beginning, end and states that reflect progress in between. You can attribute very specific data to all of these states.
 
