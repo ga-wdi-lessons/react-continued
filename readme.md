@@ -28,7 +28,6 @@ Building in React is a fundamental shift from how we have developed previously. 
   > Encapsulation (of a sort). An object is a wrapper for behavior and data. It's a logical, helpful way to organize data. But it can be hard to maintain when dealing with a large number of objects.
 
 </details>
-<br/>
 
 <details>
   <summary>In what way do we encapsulate our code in React?</summary>
@@ -36,7 +35,6 @@ Building in React is a fundamental shift from how we have developed previously. 
   > Through components that define the structure, styling and behavior of a UI element. Furthermore, data flows independently through components.
 
 </details>
-<br/>
 
 A React component is built to expect an input and render a UI with it. More importantly, a (well-structured) component only receives data specific to its purpose. For example, our `Post` component from the blog example will only receive `title`, `author` and the like as inputs -- nothing else.
 
@@ -82,7 +80,6 @@ So why do we follow all these principles? If not, it is easy to lose control of 
   > The properties of a component that change as the application runs. As opposed to .props, which are immutable.
 
 </details>
-<br/>
 
 So we've talked about `.state` at a more granular level. But now we're asking what it means for an application to have a singular "state" at a given point in time.
 
@@ -112,7 +109,6 @@ It's easy to think about this in terms of a game, because there is a clear idea 
   > Events.
 
 </details>
-<br/>
 
 You can think of your React application as a state machine. It receives user interaction as input and what we receive as output is a UI that reflects a brand new state.
 
