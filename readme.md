@@ -33,7 +33,7 @@ Building in React is a fundamental shift from how we have developed previously. 
 <details>
   <summary>In what way do we encapsulate our code in React?</summary>
 
-  > Through components that define the structure, styling and behavior of a UI element. Data exists independently of a component definition.
+  > Through components that define the structure, styling and behavior of a UI element. Furthermore, data flows independently through components.
 
 </details>
 <br/>
