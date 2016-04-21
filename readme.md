@@ -74,7 +74,7 @@ Because the same input will always produce the same output, components are easil
 
 ## State (10 minutes / 0:30)
 
-So why do we follow all these principles? If not, it is easy to lose control of our application's state. **What do we mean by state?**
+So why do we follow all these principles? If not, it is easy to lose control of our application's state.
 
 <details>
   <summary>What do you we mean by a React component's "state", in the context of yesterday's class?</summary>
