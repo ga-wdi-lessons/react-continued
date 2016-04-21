@@ -4,13 +4,13 @@
 
 ## Learning Objectives
 
-- Differentiate between Object Oriented Programming and Functional Programming paradigms
-- Explain how React incorporate principles of Functional Programming
-- Identify state in a React app
-- Define the role of Container components and when we would use them
-- Utilize React's PropTypes to type check the values passed into our components
-- Explain the ways to add styles to a React app
-- Use jQuery to make AJAX calls in a React app
+* Differentiate between Object Oriented Programming and Functional Programming paradigms
+* Explain how React incorporate principles of Functional Programming
+* Identify state in a React app
+* Define the role of Container components and when we would use them
+* Utilize React's PropTypes to type check the values passed into our components
+* Explain the ways to add styles to a React app
+* Use jQuery to make AJAX calls in a React app
 
 ---
 
@@ -22,38 +22,41 @@ In today's class you're going to get practice building a React app that's more c
 
 Building in React is a fundamental shift from how we have coded previously. Throughout this course, we've focused on an object-oriented paradigm.
 
-**What does OOP mean?**  
-**What benefits do we get from OOP?**
+<details>
+  <summary>What does it mean to follow an OOP paradigm? What are the benefits/pitfalls of using OOP?</summary>
 
-> Encapsulation (of a sort). An object is a wrapper for behavior and data.
+  > Encapsulation (of a sort). An object is a wrapper for behavior and data.
 
-**In what way do we encapsulate our code in React?**
+</details>
+<br/>
 
-> Through components that define the structure, styling and behavior of a UI element. Data exists independently of a component definition.
+<details>
+  <summary>In what way do we encapsulate our code in React?</summary>
+
+  > Through components that define the structure, styling and behavior of a UI element. Data exists independently of a component definition.
+
+</details>
+<br/>
 
 A React component is built to expect an input and render a UI with it. More importantly, a (well-structured) component only receives data specific to its purpose. For example, our `Post` component from the blog example will only receive `title`, `author` and the like as inputs -- nothing else.
 
 While this doesn't sound too groundbreaking, it is very different from the OOP principles we've gotten used to. This is because React follows a more **functional** approach to programming. A component will never behave differently depending on what input is passed into it. In other words, in a React component, **the same input will always produce the same output**.
 
-One thing that's hard to adjust to in React coming from an OOP background is packing too much information into a component.
-
 You can build an app in a lot of ways, but if you want to look at some of the best practices, we can talk about what a component should be: **F.I.R.S.T.**
 
 #### Focused
 
-Components should do one thing and do it well.
+Components should do one thing and do it well. One thing that's hard to adjust to in React coming from an OOP background is packing too much information into a component.
+
+Think back to the Post component from yesterday's class.
 
 #### Independent
 
 Components should increase cohesion and reduce coupling. In other words, components should not rely on one another but they should compliment one another.
 
-> What about nested components? Well, you could use the Comment we placed in Post yesterday in a completely different component.
-
 #### Reusable
 
 Components should be written in a way that reduces the duplication of code.
-
-> See earlier example about Comments not being restricted to Posts.
 
 #### Small
 
@@ -69,7 +72,15 @@ Because the same input will always produce the same output, components are easil
 
 So why do we follow all these principles? If not, it is easy to lose control of our application's state. **What do we mean by state?**
 
-We've talked about `.state` at a more granular level: the properties of a component that change as the application runs. But now we're asking what it means for an application to have a singular "state" at a given point in time.
+<details>
+  <summary>What do you we mean by a React component's "state", in the context of yesterday's class?</summary>
+
+  > The properties of a component that change as the application runs. As opposed to .props, which are immutable.
+
+</details>
+<br/>
+
+So we've talked about `.state` at a more granular level. But now we're asking what it means for an application to have a singular "state" at a given point in time.
 
 So what is this "state"? The organization and flow of data in an application at any point in time.
 
@@ -80,13 +91,19 @@ Let's think of states in terms of a game: Pokémon.
 
 What about when the game ends?
 
-> 150 Pokemon. Maybe 151. 8 gym badges.
+> 150 Pokemon. 8 gym badges.
 
-It's easy to think about this in terms of a game, because you can attribute very specific data to a particular state.
+It's easy to think about this in terms of a game, because there is a clear idea of a beginning, end and states that reflect progress in between. You can attribute very specific data to all of these states.
 
-And how do you transition between states? **Events.**
+<details>
+  <summary>So we know an application can have different states. But how do we transition in between them?</summary>
 
-You can think of your application as a global function. It receives user interaction as input and what we receive as output is a brand new state.
+  > Events.
+
+</details>
+<br/>
+
+You can think of your React application as a state machine. It receives user interaction as input and what we receive as output is a UI that reflects a brand new state.
 
 ---
 
