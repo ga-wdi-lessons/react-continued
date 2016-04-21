@@ -48,15 +48,19 @@ You can build an app in a lot of ways, but if you want to look at some of the be
 
 Components should do one thing and do it well. One thing that's hard to adjust to in React coming from an OOP background is packing too much information into a component.
 
-Think back to the Post component from yesterday's class.
+> Think back to the Post component from yesterday's class.
 
 #### Independent
 
-Components should increase cohesion and reduce coupling. In other words, components should not rely on one another but they should compliment one another.
+Components should increase cohesion and reduce coupling. Behavior in one component should not impact the behavior of another. In other words, components should not rely on one another.
+
+> But they should compliment one another, just like our Comment component did for Post in yesterday's class.
 
 #### Reusable
 
 Components should be written in a way that reduces the duplication of code.
+
+> We could have nested yesterday's Comment in a component other than Post.
 
 #### Small
 
