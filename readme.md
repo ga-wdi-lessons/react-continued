@@ -197,19 +197,17 @@ ReactDOM.render(
  )
 ```
 
-<!-- TODO: Add Commit Diff  -->
-
 ---
 
 #### Step 2: [Adds Home UI](https://github.com/ga-wdi-exercises/react-omdb/commit/17002daa0c2834079c7ef0a29b54e01524004e8a) (5 minutes / 1:30)
 
 Great, now that we know React is working, let's refactor that HelloWorld component to serve as our app's Home component.
 
-**Actions**:
-- Create a Home component that outputs a header and a container element
-- Render that component to the DOM in your app's main `index.js` file
+**Actions**
+- Create a Home component that outputs an `<h1>` and a container `<div>` element
+- Render that component to the DOM
 
-<!-- TODO: Add Commit Diff  -->
+> **NOTE:** The solution separates components into different files. Each of these files `module.exports` the component definition. This is a good way or organizing a React application, but not the only way. You are welcome to keep all component definitions in a single `index.js` file as well.
 
 **Q**. Why do you think we have to use the `className` syntax when defining class attributes for our elements?
 
@@ -231,27 +229,31 @@ We are going to construct a Search component and render that later on as a child
 
 **Actions**
 
-First..
-- Create a new file for you Search component
-- Define a Search component that displays a search box, and an inviting button
-- Load in the file and render the Search component in the Home component
+First...
+- Create a new file for your Search component
+- Define a Search component that renders a search form
+- Load (or `require`) the Search file in the Home file
+- Render the Search component in the Home component
 
-Then..
+Then...
 - Define your Search component's initial state
-- When a user searches for a movie, reset your component's state to track their query
-- Wire up your button to log whatever is in the input field when the button is clicked
+- Define a function that will update the Search component's state with the search query when the user submits the form
+- Use an event listener to attach this function to your form
+- Wire up your form's button to log whatever is in the input field when the button is clicked
 
-**Hints**
-
-> Start small - just focus on getting the UI, then worry about wiring up the button so you are logging the search term
+> **HINT:** Start small - just focus on getting the UI, then worry about wiring up the button so you are logging the search term
 
 **Bonus**
-- utilize `onChange` in your search element to set the state on every change equal to the value of the input
+- Utilize `onChange` in your search element to set the state on every change equal to the value of the input
 
 
 **Q**. What method do we need to define in order for our component's state to be set when it is first rendered?
 
 > A: `getInitialState()`
+
+**Q**. What value(s) should we include in our Search component's initial state?
+
+> A: Search query.
 
 **Q**. What is an example of explicit state mutation in React?
 
@@ -265,8 +267,6 @@ Then..
 
 > A: In order to prevent the event firing a page refresh and thus losing our app's state
 
-<!-- TODO: add Commit Diff -->
-
 ---
 
 ### Check-in / Break (15 minutes / 2:05)
@@ -275,7 +275,7 @@ Then..
 
 ### Container Components
 
-When building in React, it's important to keep in mind some of the principles of what a component should be. According to the React's developers, React components should be FIRST: focused, independent, reusable, small, and testable. In order to help keep components slim, a good practice is to move as much of the business logic surrounding a component's state to a container component.
+When building in React, it's important to keep in mind some of the principles of what a component should be. According to React's developers, React components should be FIRST: focused, independent, reusable, small, and testable. In order to help keep components slim, a good practice is to move as much of the business logic surrounding a component's state to a container component.
 
 If you're using React correctly, you're going to notice you have a lot of components that simply take in some data via props and output some UI - that is, components with just a render method. The reason for this is because a really great paradigm to get used to is separating your components into container components and presentational components, with presentational components optionally taking in some data and rendering a view.
 
@@ -287,11 +287,11 @@ Let's look at our Search component, right now, even without worrying about query
 
 **Actions**
 
-- Refactor your Search component so that it only renders a UI based on passed in data
-- Create a new file for your SearchContainer component
-- Define a new container component for Search
-- The container Component should handle the business logic for your app's state
-- Load in the file and make it so the Search Container renders the Search component
+- Refactor your Search component so that it only renders a UI based on passed in data. You will refactor your state-related methods into a separate "container" component...
+- Create a new file for and define your SearchContainer component
+- This SearchContainer component should handle the business logic for your app's state (i.e., the methods removed from your initial Search component)
+- Load the file containing the Search component in the SearchContainer file
+- SearchContainer's `render` method should only render a Search component. SearchContainer's methods and query value (the search term) should be passed into Search via `.props`. [Reference this diff if you need help](https://github.com/ga-wdi-exercises/react-omdb/commit/fd5e170ca89424aac2501865d8de7e4ced9a0b7d)
 
 **Q**. What is our end goal in refactoring our Search components
 
@@ -301,15 +301,13 @@ Let's look at our Search component, right now, even without worrying about query
 
 > A: We are passing down functions to handle user input and when a user submits a search, as well as the actual user query
 
-<!-- TODO: add commit diff  -->
-
 ---
 
 ### Prop Types
 
-If you've come to JavaScript from a strictly typed language you've most likely missed the assurance that types gives you. Some, however, feel like a strictly typed language is too demanding and prefer something a little more laid back. PropTypes in React are the middle ground in terms of type checking properties that are passed to your components.
+If you've come to JavaScript from a strictly typed language you've most likely missed the assurance that types gives you. Some, however, feel like a strictly typed language is too demanding and prefer something a little more laid back. PropTypes in React are the middle ground in terms of type-checking properties that are passed to your components.
 
-PropTypes are great for finding bugs in our components but another useful feature is their ability to add documentation to a component. When we look at a well written component, we can look at the render method to figure out what it's going to look like and we can look at its propTypes to figure out what it needs to accept to render properly.
+PropTypes are great for finding bugs in our components but another useful feature is their ability to add documentation to a component. When we look at a well written component, we can look at the render method to figure out what it's going to look like and we can look at its PropTypes to figure out what it needs to accept to render properly.
 
 ---
 
@@ -321,9 +319,11 @@ Let's add some PropTypes definitions to our Search component:
 
 **Actions**
 - Define a variable called `PropTypes` equal to `React.PropTypes` right after you load in React
-- Set a property on your Search component equal to an object, who's key-value pairs are names of `props` and the values are their properties data types called on `PropTypes`   
+- Set a property on your Search component equal to an object. Each of its keys will be the name of one of your component's `.props`The corresponding values will be the `PropTypes` declarations.
 
-> **Note** check out the [docs](https://facebook.github.io/react/docs/reusable-components.html#prop-validation) for more info on PropTypes
+> **NOTE:** Refer to the [docs](https://facebook.github.io/react/docs/reusable-components.html#prop-validation) for PropTypes syntax.
+>
+> **HINT:** PropTypes syntax can get a little weird. Functions are referred to as `func`, while booleans are `bool`.
 
 **Q**. What is adding PropTypes similar to the Rails world?  
 
@@ -341,15 +341,24 @@ Let's add some PropTypes definitions to our Search component:
 
 #### Step 7: [Rendering Hard-Coded Results](https://github.com/ga-wdi-exercises/react-omdb/commit/11efb9ffc6efc3d221151ab997d591f5805b663a)
 
-Great now that we have better organization and security in our code, let's working getting results to render after a user searches. In order to do this, we will need to keep track of the state of a user's search (i.e. have they clicked "search" yet or not).
+Great now that we have better organization and security in our code, let's work to get results to render after a user searches. In order to do this, we will need to keep track of the state of a user's search (i.e., have they clicked "search" yet or not?).
 
 Continuing to build on the theme of small achievable wins, let's start by only worrying about rendering some hard-coded movies.
 
 **Actions**
-- In a new file, define a results component that will take in a collection of movie objects and render each individual movie's title and poster
-- Refactor your Search Container component to include state relating to whether or not a user has searched
-- If a user has searched, instead of rendering the Search component, render a Results components will hard coded data
+- In a new file, define a results component that will take in a collection of movie objects and render each individual movie's title and poster - you can represent the latter with a URL string
+- Refactor your SearchContainer component to include state relating to whether or not a user has searched
+- In the SearchContainer file, load in the file containing your Results component
+- If a user has searched, instead of rendering the Search component, render a Results components for which the hard-coded movie data is passed in as `props`
 - Make the Home header link to root
+
+**Q.** What should the data type of the value that represents whether a user has searched or not be?
+
+> A: A boolean. Think of this as an "on-off" switch.
+
+**Q.** What Javascript tools can you use to dynamically render different UI's from a component. In other words, how can I change what is rendered depending on whether the user has searched or not.
+
+> A: By wrapping different return statements in a conditional block. If the user has searched, render this. If not, render that.
 
 **Q**. Where does `.map` come from?
 
@@ -365,18 +374,22 @@ Continuing to build on the theme of small achievable wins, let's start by only w
 
 Because React was developed originally to support view rendering, React does not come with support for `AJAX` calls out of the box. In order to make an ajax request, we need to install another library such as `jQuery` or load in another package / third-party dependency to execute `HTTP` requests.
 
-> **Note**: an increasingly popular option via the npm world is a module called [axios](https://github.com/mzabriskie/axios) which can be used to make ajax calls. It provides a similar interface and behavior to that of `ngResource` in Angular.
+> **NOTE**: an increasingly popular option via the npm world is a module called [axios](https://github.com/mzabriskie/axios) which can be used to make AJAX calls. It provides a similar interface and behavior to that of `ngResource` in Angular. We do not use this in the solution.
 
-#### Step 8: [Connect to Omdb Api](https://github.com/ga-wdi-exercises/react-omdb/commit/2e3178e796567a4639369ed4962f70242dd7cc0e)
+#### Step 8: [Connect to OMDB Api](https://github.com/ga-wdi-exercises/react-omdb/commit/2e3178e796567a4639369ed4962f70242dd7cc0e)
 
-Now that we can render hard-coded results,
+Now that we can render hard-coded results...
 
 **Actions**
-- With the API we're using, you don't need an API key, go ahead an look at the [documentation](http://omdbapi.com/) to determine the api's proper usage
-- We're going to be querying the movie API based on title to return a collection of results.
-- Load in jQuery and use it to make an ajax call to the api endpoint using the user's query
-- Create a file for `omdbHelpers` that will export the function definitions used to make the api calls to OMDB
-- Pass the movie data to the Results component to be displayed
+- Visit the [OMDB API documentation](http://omdbapi.com/) to determine how to properly use the API - note that we do not need a key
+- We're going to be querying the API based on title to return a collection of results
+- Load in jQuery and use it to make an AJAX call to the API endpoint using the search query
+- Create an `omdbHelpers` file that will `module.exports` the function definition used to make the API calls to OMDB
+- In the SearchContainer component, use your OMDB helper method to query the API when the user submits a search
+- Store the API call response to SearchContainer's state
+- Pass the movie data to the Results component in place of the hard-coded data
+
+> **NOTE:** Make sure to look through the whole API JSON response. You're going to have to parse through it and save only the data you need.
 
 **Q**. What parsing of user input to do we need to account for in order to make a valid search query?
 
@@ -400,11 +413,11 @@ From the [Docs](https://facebook.github.io/react/tips/inline-styles.html)...
 
 >  "In React, inline styles are not specified as a string. Instead they are specified with an object whose key is the camelCased version of the style name, and whose value is the style's value, usually a string"
 
-However, this kind of rethinking the wheel, feels like a step backwards for a lot of designers and developers who cringe at the notion of inline styles. For them, they choose to build React apps through a more traditional flow of adding ids and classes and then targeting elements via external stylesheets.
+However, this kind of rethinking the wheel feels like a step backwards for a lot of designers and developers who cringe at the notion of inline styles. For them, they choose to build React apps through a more traditional flow of adding ids and classes and then targeting elements via external stylesheets.
 
-Also, via webpack and other custom loaders, it is possible to use many third-party libraries or processors such as SASS, LESS, and Post-CSS.
+Also, via Webpack and other custom loaders, it is possible to use many third-party libraries or processors such as SASS, LESS, and Post-CSS.
 
-Interesting to note, this problem has not been universally solved, and thus the debate will most likely continue to rage on until [somebody](https://medium.com/@jviereck/modularise-css-the-react-way-1e817b317b04#.61qgjgdu3) figures it out. Therefore, its often lead to a team decision when choosing the best option for the application.
+Interesting to note, this problem has not been universally solved, and thus the debate will most likely continue to rage on until [somebody](https://medium.com/@jviereck/modularise-css-the-react-way-1e817b317b04#.61qgjgdu3) figures it out. Therefore, its often left to a team decision when choosing the best option for the application.
 
 > Interested in learning more? Check out some excellent [blog posts](http://jamesknelson.com/why-you-shouldnt-style-with-javascript/) on the [subject](http://stackoverflow.com/questions/26882177/react-js-inline-style-best-practices) from the [front-end community](https://css-tricks.com/the-debate-around-do-we-even-need-css-anymore/)
 
@@ -416,22 +429,21 @@ Interesting to note, this problem has not been universally solved, and thus the 
 
 ### Step 9: [Add Styles with React](https://github.com/ga-wdi-exercises/react-omdb/commit/b8e07c0fa4310d5a2bf66f7a5d2592037d4ebfe1)
 
-To add the finishing touches to our application, let's take an stab at styling our app with inline-styles and advance our markup with some help from Bootstrap
+To add the finishing touches to our application, let's take a stab at styling our app with inline-styles and advance our markup with some help from Bootstrap...
 
 **Action**
 - Install `css-loader` and `style-loader` loaders with npm
 - Define a new loader in your webpack configuration that targets any css files and applies the css and style loader transformations
-- Load in Bootstrap cdn in `app/index.html`
-- Modify Markup to include Boostrap Classes
-- Create a styles directory and make a file for your css rule definitions
-- Load in that file in any component and then use that to apply inline styles to React components
+- Load in Bootstrap CDN in `app/index.html`
+- Modify UI to include Bootstrap classes
+- Create a `styles` directory and make a file for your CSS rule definitions - this will be written in Javascript!
+- Load in that file in any component and then use that to apply inline styling
 
 **Q**. What are some tradeoffs for using inline-styles to style React components?
 
 ## Closing (10 minutes / 2:30)
 
 - What are some struggles you encountered when building out a more complex React app for the first time?
-
 - What are some good rules of thumb to help keep components maintainable?
 
 ---
