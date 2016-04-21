@@ -14,7 +14,7 @@
 
 ---
 
-## Framing
+## Framing (20 minutes / 0:20)
 
 In today's class you're going to get practice building a React app that's more complex than yesterday's simple blog example. When building an app like this, it's important to keep certain development practices and paradigms in mind so that we write maintainable code.
 
@@ -65,7 +65,7 @@ Because the same input will always produce the same output, components are easil
 
 > If you're interested, [Ava](https://www.npmjs.com/package/ava) is a popular testing library for React.
 
-## State
+## State (10 minutes / 0:30)
 
 So why do we follow all these principles? If not, it is easy to lose control of our application's state. **What do we mean by state?**
 
@@ -90,7 +90,9 @@ You can think of your application as a global function. It receives user interac
 
 ---
 
-### Group Activity: Identify States while using Google
+### Group Activity: Identify States while using Google (10 minutes / 0:40)
+
+> 5 minutes exercise. 5 minutes review.
 
 With the idea that state transitions are caused by events in mind...
 * Visit Google's homepage.
@@ -101,27 +103,45 @@ With the idea that state transitions are caused by events in mind...
 
 ---
 
+## Break (10 minutes / 0:50)
+
+---
+
 ## React OMDB
 
 Intro to the solution
 
 ---
 
-### Group Activity: Id OMDB app's states
+### You Do: Map Out React OMDB (10 minutes / 1:00)
 
-Fork and clone repo and follow instructions in Step 0
+> 5 minutes set-up and exercise. 5 minutes review.
+
+Fork and clone the React OMDB repo.
+
+<!-- Create and insert repo link below. -->
+
+```bash
+git clone -------
+cd -------
+git checkout solution
+npm install
+npm start
+```
+
+Now visit `http://localhost:8080` in the browser. You should see the final version of the  OMDB React application.
+
+Spend two minutes playing with the application. As you're doing that, make note of the following...
+* How would you divide what you see into React components?
+* What different states can you detect in the application?
 
 ---
 
-### Initial Setup
+### Initial Setup (10 minutes / 1:20)
 
 ---
 
-### Walkthrough
-
----
-
-#### Adds Hello World React
+#### Adds Hello World React (5 minutes / 1:25)
 
 To kick things off, let's add a HelloWorld component to make sure things are all wired together.
 
@@ -150,7 +170,7 @@ ReactDOM.render(
 
 ---
 
-#### Adds Home UI
+#### Adds Home UI (5 minutes / 1:30)
 
 Great, now that we know React is working, let's refactor that HelloWorld component to serve as our app's Home component.
 
@@ -168,7 +188,7 @@ Great, now that we know React is working, let's refactor that HelloWorld compone
 
 ---
 
-#### Adds Search UI
+#### Adds Search UI (20 minutes / 1:50)
 
 Ok, we now have a proper header on the page and our Home component setup, but our movie browser app is lacking the ability to search for movies...let's change that!
 
@@ -182,7 +202,7 @@ We are going to construct a Search component and render that later on as a child
 
 > A: `this.setState()`
 
-**Q**. What is the importance of `onChange` and `onSubmit`?
+**Q**. How might we use / what is the importance of `onSubmit`?
 
 > A: they are examples of built in event handlers that we must supply a listener callback function to
 
@@ -194,7 +214,7 @@ We are going to construct a Search component and render that later on as a child
 
 ---
 
-### Check-in / Break
+### Check-in / Break (15 minutes / 2:05)
 
 ---
 
@@ -210,7 +230,7 @@ If you're using React correctly, you're going to notice you have a lot of compon
 
 Let's look at our Search component, right now, even without worrying about querying the API or displaying the results, our component is starting to get a little heavy due to all our code relating to state. This is a good sign that we have an opportunity to refactor, and move the logic out of the "presenter" component, and into a "container component"
 
-**Q**. What is our end goal in refactoring our Search component?s
+**Q**. What is our end goal in refactoring our Search components
 
 > A: To make Search a purely presenter component, who's only job is to take data from props and render a view
 
@@ -256,6 +276,12 @@ Let's add some propType definitions to our Search component:
 ---
 
 ## Style in React
+
+---
+
+## Closing (10 minutes / 2:30)
+
+What are some struggles you encountered when building out a more complex React app for the first time?
 
 ---
 
