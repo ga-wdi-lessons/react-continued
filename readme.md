@@ -25,7 +25,7 @@ Building in React is a fundamental shift from how we have coded previously. Thro
 <details>
   <summary>What does it mean to follow an OOP paradigm? What are the benefits/pitfalls of using OOP?</summary>
 
-  > Encapsulation (of a sort). An object is a wrapper for behavior and data.
+  > Encapsulation (of a sort). An object is a wrapper for behavior and data. It's a logical, helpful way to organize data. But it can be hard to maintain when dealing with a large number of objects.
 
 </details>
 <br/>
