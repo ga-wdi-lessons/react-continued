@@ -112,6 +112,10 @@ It's easy to think about this in terms of a game, because there is a clear idea 
 
 You can think of your React application as a state machine. It receives user interaction as input and what we receive as output is a UI that reflects a brand new state.
 
+Let's look at the process of a rendering a React Component...
+![](./react-render.png)
+
+
 ---
 
 ### Group Activity: Identify States while using Google (10 minutes / 0:40)
@@ -156,6 +160,7 @@ npm start
 Now visit `http://localhost:8080` in the browser. You should see the final version of the  OMDB React application.
 
 Spend two minutes playing with the application. As you're doing that, make note of the following...
+
 * How would you divide what you see into React components?
 * What different states can you detect in the application?
 
