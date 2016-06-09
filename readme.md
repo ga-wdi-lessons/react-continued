@@ -75,7 +75,7 @@ Because the same input will always produce the same output, components are easil
 So why do we follow all these principles? If not, it is easy to lose control of our application's state.
 
 <details>
-  <summary>What do you we mean by a React component's "state", in the context of yesterday's class?</summary>
+  <summary>What do we mean by a React component's "state"?</summary>
 
   > The properties of a component that change as the application runs. As opposed to .props, which are immutable.
 
