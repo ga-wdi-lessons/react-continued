@@ -172,7 +172,7 @@ Spend two minutes playing with the application. As you're doing that, make note 
 
 ---
 
-#### Step 1: [Set up a `HelloWorld` Component](https://github.com/ga-wdi-exercises/react-omdb/commit/f1f4c044ea56754b2b43cc5699a260f221178171) (5 minutes / 1:25)
+#### Step 1: [Set up a `HelloWorld` Component](https://github.com/ga-wdi-exercises/react-omdb/commit/0024bef69f88dd9a5e086762a151b6063ecdf511) (5 minutes / 1:25)
 
 To kick things off, let's add a HelloWorld component to make sure things are all wired together.
 
@@ -219,7 +219,7 @@ To kick things off, let's add a HelloWorld component to make sure things are all
 
 ---
 
-#### Step 2: [Adds Home UI](https://github.com/ga-wdi-exercises/react-omdb/commit/17002daa0c2834079c7ef0a29b54e01524004e8a) (5 minutes / 1:30)
+#### Step 2: [Adds Home UI](https://github.com/ga-wdi-exercises/react-omdb/commit/13a6ae733e45a9ac8bfacc10978f531b68b653c6) (5 minutes / 1:30)
 
 Great, now that we know React is working, let's refactor that HelloWorld component to serve as our app's Home component.
 
@@ -247,7 +247,13 @@ Great, now that we know React is working, let's refactor that HelloWorld compone
 
 ---
 
-#### Step 3: [Adds Search UI](https://github.com/ga-wdi-exercises/react-omdb/commit/c0391fe057d1fe8ba76bdf4e137a2a7b255a4837) (20 minutes / 1:50)
+#### Step 3: [Adds Search UI](https://github.com/ga-wdi-exercises/react-omdb/commit/1161c0c3eba93e036261c96288c75b1cf9ddf476) (20 minutes / 1:50)
+
+> Here are some other commits demonstrating how we can complete this part in three steps...
+>
+> 3.1: [Add Static Search UI](https://github.com/ga-wdi-exercises/react-omdb/commit/4c5e83f0146e004cc0321242311bd7b727beaa3f)
+> 3.2: [Wire Up Form With Event Listener](https://github.com/ga-wdi-exercises/react-omdb/commit/7d446952e9ff5d7290caab4783b368d62f7b42b2)
+> 3.3: [Use State to Track Search Query](https://github.com/ga-wdi-exercises/react-omdb/commit/1161c0c3eba93e036261c96288c75b1cf9ddf476)
 
 Ok, we now have a proper header on the page and our Home component setup, but our movie browser app is lacking the ability to search for movies...let's change that!
 
@@ -321,7 +327,7 @@ If you're using React correctly, you're going to notice you have a lot of compon
 
 ---
 
-#### Step 5: [Move Search logic to a Container component](https://github.com/ga-wdi-exercises/react-omdb/commit/fd5e170ca89424aac2501865d8de7e4ced9a0b7d)
+#### Step 4: [Move Search Logic to a Container Component](https://github.com/ga-wdi-exercises/react-omdb/commit/8d4d671801909adfdf871c12dbfb6daff28d242c)
 
 Let's look at our Search component, right now, even without worrying about querying the API or displaying the results, our component is starting to get a little heavy due to all our code relating to state. This is a good sign that we have an opportunity to refactor, and move the logic out of the "presenter" component, and into a "container component"
 
@@ -346,54 +352,10 @@ Let's look at our Search component, right now, even without worrying about query
   > We are passing down functions to handle user input and when a user submits a search, as well as the actual user query
 
 </details>
----
-
-### Prop Types
-
-If you've come to JavaScript from a strictly typed language you've most likely missed the assurance that types gives you. Some, however, feel like a strictly typed language is too demanding and prefer something a little more laid back. PropTypes in React are the middle ground in terms of type-checking properties that are passed to your components.
-
-PropTypes are great for finding bugs in our components but another useful feature is their ability to add documentation to a component. When we look at a well written component, we can look at the render method to figure out what it's going to look like and we can look at its PropTypes to figure out what it needs to accept to render properly.
 
 ---
 
-#### Step 6: [Adds PropTypes to Search](https://github.com/ga-wdi-exercises/react-omdb/commit/adb1cafc3761d59582ae7e2e9f898fbf0378caf7)
-
-With our latest refactoring, we now are using a container component to handle the logic relating to our app's search functionality, and we then pass the necessary data and functions down to our presenter component. Because of this shift, the values that we pass down via props become a lot more important and therefore we need a way to enforce that we are getting the values we expect, and that they are the right type.
-
-Let's add some PropTypes definitions to our Search component:
-
-**Actions**
-- Define a variable called `PropTypes` equal to `React.PropTypes` right after you load in React
-- Set a property on your Search component equal to an object. Each of its keys will be the name of one of your component's `.props`The corresponding values will be the `PropTypes` declarations.
-
-> **NOTE:** Refer to the [docs](https://facebook.github.io/react/docs/reusable-components.html#prop-validation) for PropTypes syntax.
->
-> **HINT:** PropTypes syntax can get a little weird. Functions are referred to as `func`, while booleans are `bool`.
-
-<details>
-  <summary>What is adding PropTypes similar to the Rails world?</summary>
-
-  > Active Record validations
-
-</details>
-
-<details>
-  <summary>How can you assure that a certain prop is passed down?</summary>
-
-  > By adding the `.isRequired` property to our type definitions
-
-</details>
-
-<details>
-  <summary>What is another benefit we get as developers by adding PropTypes definitions to our components?</summary>
-
-  > It adds a layer of documentation to our code. We can look at a component, view its render method to see the UI it will output, and then look at the PropTypes to see the data values in needs to render
-
-</details>
-
----
-
-#### Step 7: [Rendering Hard-Coded Results](https://github.com/ga-wdi-exercises/react-omdb/commit/11efb9ffc6efc3d221151ab997d591f5805b663a)
+#### Step 5: [Rendering Hard-Coded Results](https://github.com/ga-wdi-exercises/react-omdb/commit/da936065246dc91a5be826602b3550d05b0adffd)
 
 Great now that we have better organization and security in our code, let's work to get results to render after a user searches. In order to do this, we will need to keep track of the state of a user's search (i.e., have they clicked "search" yet or not?).
 
@@ -436,7 +398,7 @@ Continuing to build on the theme of small achievable wins, let's start by only w
 
 ---
 
-### AJAX w/ React
+### BONUS: AJAX w/ React
 
 Because React was developed originally to support view rendering, React does not come with support for `AJAX` calls out of the box. In order to make an ajax request, we need to install another library such as `jQuery` or load in another package / third-party dependency to execute `HTTP` requests.
 
@@ -480,7 +442,7 @@ Now that we can render hard-coded results...
 
 ---
 
-### Style in React
+### BONUS: Style in React
 
 When it comes to adding styles to React, there is a bit of debate over what's the best practice. Facebook's official docs and recommendations are to write stylesheets that treat your CSS rule declarations as properties on one big Javascript object that can be passed into components via inline styles.
 
@@ -498,10 +460,6 @@ Interesting to note, this problem has not been universally solved, and thus the 
 
 ---
 
-## Bonus
-
----
-
 ### Step 9: [Add Styles with React](https://github.com/ga-wdi-exercises/react-omdb/commit/b8e07c0fa4310d5a2bf66f7a5d2592037d4ebfe1)
 
 To add the finishing touches to our application, let's take a stab at styling our app with inline-styles and advance our markup with some help from Bootstrap...
@@ -515,6 +473,8 @@ To add the finishing touches to our application, let's take a stab at styling ou
 - Load in that file in any component and then use that to apply inline styling
 
 **Q:** What are some tradeoffs for using inline-styles to style React components?
+
+---
 
 ## Closing (10 minutes / 2:30)
 
