@@ -75,7 +75,7 @@ Because the same input will always produce the same output, components are easil
 So why do we follow all these principles? If not, it is easy to lose control of our application's state.
 
 <details>
-  <summary>What do we mean by a React component's "state"?</summary>
+  <summary><strong>Q: What do we mean by a React component's "state"?</strong></summary>
 
   > The properties of a component that change as the application runs. As opposed to .props, which are immutable.
 
@@ -88,14 +88,14 @@ So what is this "state"? The organization and flow of data in an application at 
 Let's think of states in terms of a game: Pokémon.
 
 <details>
-  <summary>What can you say about the player when a new game starts?</summary>
+  <summary><strong>Q: What can you say about the player when a new game starts?</strong></summary>
 
   > 0 Pokemon. We're stuck in Pallet Town (City #1). Professor Oak is around.
 
 </details>
 
 <details>
-  <summary>What about when the game ends?</summary>
+  <summary><strong>Q: What about when the game ends?</strong></summary>
 
   > 150 Pokemon. 8 gym badges.
 
@@ -104,7 +104,7 @@ Let's think of states in terms of a game: Pokémon.
 It's easy to think about this in terms of a game, because there is a clear idea of a beginning, end and states that reflect progress in between. You can attribute very specific data to all of these states.
 
 <details>
-  <summary>So we know an application can have different states. But how do we transition in between them?</summary>
+  <summary><strong>Q: So we know an application can have different states. But how do we transition in between them?</strong></summary>
 
   > Events.
 
@@ -176,14 +176,14 @@ To kick things off, let's add a `HelloWorld` component to make sure things are a
 - Run `npm start` and make sure everything is working
 
 <details>
-  <summary> What dependency do we need to load in whenever we want to create a component definition?</summary>
+  <summary><strong>Q: What dependency do we need to load in whenever we want to create a component definition?</strong></summary>
 
   > React
 
 </details>
 
 <details>
-  <summary>How do we go about starting to define a React component?</summary>
+  <summary><strong>Q: How do we go about starting to define a React component?</strong></summary>
 
   ```js
   class ComponentName extends Component {
@@ -194,14 +194,14 @@ To kick things off, let's add a `HelloWorld` component to make sure things are a
 </details>
 
 <details>
-  <summary> What is the one method that every React component must have defined?</summary>
+  <summary><strong>Q: What is the one method that every React component must have defined?</strong></summary>
 
   > render
 
 </details>
 
 <details>
-  <summary> What is the syntax for rendering an application's root element?</summary>
+  <summary><strong>Q: What is the syntax for rendering an application's root element?</strong></summary>
 
   ```js
   ReactDOM.render(
@@ -226,14 +226,14 @@ Great, now that we know React is working, let's refactor that HelloWorld compone
 > **NOTE:** The solution separates components into different files. Each of these files exports the component definition. This is a good way or organizing a React application, but not the only way. You are welcome to keep all component definitions in a single `index.js` file as well.
 
 <details>
-  <summary> Why do you think we have to use the `className` syntax when defining class attributes for our elements?</summary>
+  <summary><strong>Q: Why do you think we have to use the `className` syntax when defining class attributes for our elements?</strong></summary>
 
   > `class` is a protected keyword in React/JSX.
 
 </details>
 
 <details>
-  <summary>How would you summarize the Home component's responsibility?</summary>
+  <summary><strong>Q: How would you summarize the Home component's responsibility?</strong></summary>
 
   > A: This will be our application's root element, the parent in which we will nest the rest of our child components. In charge of render what the user sees on initial page load.
 
@@ -271,7 +271,7 @@ Then...
 > **HINT:** Start small. Just focus on getting the UI, then worry about wiring up the button so you are logging the search term.
 
 <details>
-  <summary> What method do we need to define in order for our component's state to be set when it is first rendered?</summary>
+  <summary><strong>Q: What method do we need to define in order for our component's state to be set when it is first rendered?</strong></summary>
 
   ```js
   constructor(props){
@@ -285,28 +285,28 @@ Then...
 </details>
 
 <details>
-  <summary> What value(s) should we include in our Search component's initial state?</summary>
+  <summary><strong>Q: What value(s) should we include in our Search component's initial state?</strong></summary>
 
   > Search query.
 
 </details>
 
 <details>
-  <summary> What is an example of explicit state mutation in React?</summary>
+  <summary><strong>Q: What is an example of explicit state mutation in React?</strong></summary>
 
   > `this.setState()`
 
 </details>
 
 <details>
-  <summary> How might we use / what is the importance of `onSubmit`?</summary>
+  <summary><strong>Q: How might we use / what is the importance of `onSubmit`?</strong></summary>
 
   > They are examples of built in event handlers that we must supply a listener callback function to
 
 </details>
 
 <details>
-  <summary> Why do we have to prevent the default behavior of our form submission event in our handler?</summary>
+  <summary><strong>Q: Why do we have to prevent the default behavior of our form submission event in our handler?</strong></summary>
 
   > In order to prevent the event firing a page refresh and thus losing our app's state
 
@@ -339,14 +339,14 @@ Let's look at our Search component, right now, even without worrying about query
 - SearchContainer's `render` method should only render a `Search` component. `SearchContainer`'s methods and query value (the search term) should be passed into Search via `.props`.
 
 <details>
-  <summary>What is our end goal in refactoring our Search components?</summary>
+  <summary><strong>Q: What is our end goal in refactoring our Search components?</strong></summary>
 
   > To make Search a purely presenter component, who's only job is to take data from props and render a view.
 
 </details>
 
 <details>
-  <summary> What is the importance of the props passed down to our Search component?</summary>
+  <summary><strong>Q: What is the importance of the props passed down to our Search component?</strong></summary>
 
   > We are passing down functions to handle user input and when a user submits a search, as well as the actual user query
 
@@ -368,28 +368,28 @@ Continuing to build on the theme of small achievable wins, let's start by only w
 - As a final touch, make the Home header link to root so that we can easily navigate the app.
 
 <details>
-  <summary>What should the data type of the value that represents whether a user has searched or not be?</summary>
+  <summary><strong>Q: What should the data type of the value that represents whether a user has searched or not be?</strong></summary>
 
   > A boolean. Think of this as an "on-off" switch.
 
 </details>
 
 <details>
-  <summary>What Javascript tools can you use to dynamically render different UI's from a component. In other words, how can I change what is rendered depending on whether the user has searched or not.</summary>
+  <summary><strong>Q: What Javascript tools can you use to dynamically render different UI's from a component. In other words, how can I change what is rendered depending on whether the user has searched or not.</strong></summary>
 
   > By wrapping different return statements in a conditional block. If the user has searched, render this. If not, render that.
 
 </details>
 
 <details>
-  <summary> Where does `.map` come from?</summary>
+  <summary><strong>Q: Where does `.map` come from?</strong></summary>
 
   > It's a native method for collections in Javascript. It behaves exactly like the Ruby enumerable `.map`
 
 </details>
 
 <details>
-  <summary> If you had to guess, what's the importance of supplying each individual result `item` with a `key` attribute?</summary>
+  <summary><strong>Q: If you had to guess, what's the importance of supplying each individual result `item` with a `key` attribute?</strong></summary>
 
   > This allows React to keep track of each unique dynamically render child element. The key is treated as the unique identifier and is important in how React  passes data to the child.
 
@@ -419,21 +419,21 @@ Now that we can render hard-coded results...
 > **NOTE:** Make sure to look through the whole API JSON response. You're going to have to parse through it and save only the data you need.
 
 <details>
-<summary> What parsing of user input to do we need to account for in order to make a valid search query?</summary>
+<summary><strong>Q: What parsing of user input to do we need to account for in order to make a valid search query?</strong></summary>
 
   > It's a good idea to replace any white space characters with a "+" to help format a proper url
 
 </details>
 
 <details>
-  <summary> Why might it be a good idea to separate our code relating to API calls into a helpers file?</summary>
+  <summary><strong>Q: Why might it be a good idea to separate our code relating to API calls into a helpers file?</strong></summary>
 
   > It reduces the complexity of the components and we might want to reuse the functions we are defining in other components
 
 </details>
 
 <details>
-  <summary> How might we handle bad response data such as no image found...?</summary>
+  <summary><strong>Q: How might we handle bad response data such as no image found...?</strong></summary>
 
   > We can parse the initial response, check for bad inputs, and modify the data  to set a valid default, the return the new results
 
@@ -471,7 +471,10 @@ To add the finishing touches to our application, let's take a stab at styling ou
 - Create a `styles` directory and make a file for your CSS rule definitions - this will be written in Javascript!
 - Load in that file in any component and then use that to apply inline styling
 
-**Q:** What are some tradeoffs for using inline-styles to style React components?
+<details>
+  <summary><strong>Q: What are some tradeoffs for using inline-styles to style React components?</strong></summary>
+
+</details>
 
 ---
 
