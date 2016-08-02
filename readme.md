@@ -166,23 +166,14 @@ Spend two minutes playing with the application. As you're doing that, make note 
 
 ---
 
-### Initial Setup (10 minutes / 1:20)
-
-#### [See walkthrough here](./react-setup.md)
-
----
-
 #### Step 1: [Set up a `HelloWorld` Component](https://github.com/ga-wdi-exercises/react-omdb/commit/0024bef69f88dd9a5e086762a151b6063ecdf511) (5 minutes / 1:25)
 
-To kick things off, let's add a HelloWorld component to make sure things are all wired together.
+To kick things off, let's add a `HelloWorld` component to make sure things are all wired together.
 
 **Actions**:
-- `npm install` the dependencies you'll need
-- Create and configure your `.babelrc` file
-- Create and configure your `webpack.config.js`file
-- In your app directory create and configure your `index.html` file
-- In your app directory create and configure your `index.js` file to render a HelloWorld component
-- Start Webpack and make sure everything is working
+- Use `create-react-app` in the command line to bootstrap a React application.
+- In your app directory, configure your `App.js` and `index.js` files to render a `HelloWorld` component
+- Run `npm start` and make sure everything is working
 
 <details>
   <summary> What dependency do we need to load in whenever we want to create a component definition?</summary>
@@ -192,9 +183,13 @@ To kick things off, let's add a HelloWorld component to make sure things are all
 </details>
 
 <details>
-  <summary> What method do we call on our `React` instance to define a component?</summary>
+  <summary>How do we go about starting to define a React component?</summary>
 
-  > `.createClass()`
+  ```js
+  class ComponentName extends Component {
+    // Component definition goes in here...
+  }
+  ```
 
 </details>
 
@@ -212,7 +207,7 @@ To kick things off, let's add a HelloWorld component to make sure things are all
   ReactDOM.render(
      <MyRootElement />, // some component
      document.getElementById("app") // some div
-   )
+  )
   ```
 
 </details>
@@ -224,26 +219,25 @@ To kick things off, let's add a HelloWorld component to make sure things are all
 Great, now that we know React is working, let's refactor that HelloWorld component to serve as our app's Home component.
 
 **Actions**
-- Create a Home component that outputs an `<h1>` and a container `<div>` element
-- Render that component to the DOM
+- Rename `App.js` to `Home.js` to better indicate the purpose of the file. Make sure to update references to this file elsewhere in your application accordingly.
+- Create a Home component that returns a container `<div>` element, which should in turn contain a `<h1>` element.
+- Render that component to the DOM.
 
-> **NOTE:** The solution separates components into different files. Each of these files `module.exports` the component definition. This is a good way or organizing a React application, but not the only way. You are welcome to keep all component definitions in a single `index.js` file as well.
+> **NOTE:** The solution separates components into different files. Each of these files exports the component definition. This is a good way or organizing a React application, but not the only way. You are welcome to keep all component definitions in a single `index.js` file as well.
 
 <details>
   <summary> Why do you think we have to use the `className` syntax when defining class attributes for our elements?</summary>
 
-  > `class` is a protected keyword in React/JSX
+  > `class` is a protected keyword in React/JSX.
 
 </details>
 
 <details>
-  <summary>How would you summarize the Home's component's responsibility?</summary>
+  <summary>How would you summarize the Home component's responsibility?</summary>
 
-  > A: This will be our application's root element, the parent in which we will nest the rest of our child components. In charge of render what the user sees on initial page load
+  > A: This will be our application's root element, the parent in which we will nest the rest of our child components. In charge of render what the user sees on initial page load.
 
 </details>
-
-**Bonus**: Add a logo and initial layout
 
 ---
 
@@ -255,33 +249,38 @@ Great, now that we know React is working, let's refactor that HelloWorld compone
 > 3.2: [Wire Up Form With Event Listener](https://github.com/ga-wdi-exercises/react-omdb/commit/7d446952e9ff5d7290caab4783b368d62f7b42b2)
 > 3.3: [Use State to Track Search Query](https://github.com/ga-wdi-exercises/react-omdb/commit/1161c0c3eba93e036261c96288c75b1cf9ddf476)
 
-Ok, we now have a proper header on the page and our Home component setup, but our movie browser app is lacking the ability to search for movies...let's change that!
+Ok, we now have a proper header on the page and our Home component setup, but our movie browser app is lacking the ability to search for movies. Let's change that!
 
-We are going to construct a Search component and render that later on as a child in the Home component.
+We are going to construct a Search component. That component will then be rendered later on as a child in the Home component.
 
 **Actions**
 
 First...
-- Create a new file for your Search component
-- Define a Search component that renders a search form
-- Load (or `require`) the Search file in the Home file
-- Render the Search component in the Home component
+- Create a new file for your Search component.
+- Define a Search component that renders a search form. This can be a simple form with a single input and submit button.
+- Import the Search file to your Home file.
+- Render the Search component in the Home component.
 
 Then...
-- Define your Search component's initial state
-- Define a function that will update the Search component's state with the search query when the user submits the form
-- Use an event listener to attach this function to your form
-- Wire up your form's button to log whatever is in the input field when the button is clicked
+- Define your Search component's initial state. It should have a `query` value that corresponds to a search term.
+- Define a function that is triggered whenever the user submits the Search form. Start by just logging `"clicked!"` to make sure it works.
+  - Use an event listener to attach this function to your form. Try googling `onSubmit`.
+- Define a function that updates your `query` value in state whenever a change is made to the input field. Try googling `onChange`.
+- Update your submit function so that it now logs the `query` value in state.
 
-> **HINT:** Start small - just focus on getting the UI, then worry about wiring up the button so you are logging the search term
-
-**Bonus**
-- Utilize `onChange` in your search element to set the state on every change equal to the value of the input
+> **HINT:** Start small. Just focus on getting the UI, then worry about wiring up the button so you are logging the search term.
 
 <details>
   <summary> What method do we need to define in order for our component's state to be set when it is first rendered?</summary>
 
-  > `getInitialState()`
+  ```js
+  constructor(props){
+    super(props)
+    this.state = {
+      // Define state here...
+    }
+  }
+  ```
 
 </details>
 
@@ -334,15 +333,15 @@ Let's look at our Search component, right now, even without worrying about query
 **Actions**
 
 - Refactor your Search component so that it only renders a UI based on passed in data. You will refactor your state-related methods into a separate "container" component...
-- Create a new file for and define your SearchContainer component
-- This SearchContainer component should handle the business logic for your app's state (i.e., the methods removed from your initial Search component)
-- Load the file containing the Search component in the SearchContainer file
-- SearchContainer's `render` method should only render a Search component. SearchContainer's methods and query value (the search term) should be passed into Search via `.props`. [Reference this diff if you need help](https://github.com/ga-wdi-exercises/react-omdb/commit/fd5e170ca89424aac2501865d8de7e4ced9a0b7d)
+- Create a new file for and define your `SearchContainer` component
+- This `SearchContainer` component should handle the business logic for your app's state (i.e., the methods removed from your initial Search component)
+- Load the file containing the `Search` component in the `SearchContainer` file
+- SearchContainer's `render` method should only render a `Search` component. `SearchContainer`'s methods and query value (the search term) should be passed into Search via `.props`.
 
 <details>
-  <summary> What is our end goal in refactoring our Search components</summary>
+  <summary>What is our end goal in refactoring our Search components?</summary>
 
-  > To make Search a purely presenter component, who's only job is to take data from props and render a view
+  > To make Search a purely presenter component, who's only job is to take data from props and render a view.
 
 </details>
 
@@ -357,16 +356,16 @@ Let's look at our Search component, right now, even without worrying about query
 
 #### Step 5: [Rendering Hard-Coded Results](https://github.com/ga-wdi-exercises/react-omdb/commit/da936065246dc91a5be826602b3550d05b0adffd)
 
-Great now that we have better organization and security in our code, let's work to get results to render after a user searches. In order to do this, we will need to keep track of the state of a user's search (i.e., have they clicked "search" yet or not?).
+Now that we have better organization and security in our code, let's work to get results to render after a user searches. In order to do this, we will need to keep track of the state of a user's search (i.e., have they clicked "search" yet or not?).
 
 Continuing to build on the theme of small achievable wins, let's start by only worrying about rendering some hard-coded movies.
 
 **Actions**
-- In a new file, define a results component that will take in a collection of movie objects and render each individual movie's title and poster - you can represent the latter with a URL string
-- Refactor your SearchContainer component to include state relating to whether or not a user has searched
-- In the SearchContainer file, load in the file containing your Results component
-- If a user has searched, instead of rendering the Search component, render a Results components for which the hard-coded movie data is passed in as `props`
-- Make the Home header link to root
+- In a new file, define a `Results` component that will take in a collection of movie objects and render each individual movie's title and poster - you can represent the latter with a URL string.
+- Refactor your `SearchContainer` component to include state relating to whether or not a user has searched.
+- In the `SearchContainer` file, load in the file containing your Results component.
+- If a user has searched, instead of rendering the Search component, render a Results components for which the hard-coded movie data is passed in as `props`.
+- As a final touch, make the Home header link to root so that we can easily navigate the app.
 
 <details>
   <summary>What should the data type of the value that represents whether a user has searched or not be?</summary>
