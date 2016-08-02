@@ -403,7 +403,7 @@ Because React was developed originally to support view rendering, React does not
 
 > **NOTE**: an increasingly popular option via the npm world is a module called [axios](https://github.com/mzabriskie/axios) which can be used to make AJAX calls. It provides a similar interface and behavior to that of `ngResource` in Angular. We do not use this in the solution.
 
-#### Step 8: [Connect to OMDB Api](https://github.com/ga-wdi-exercises/react-omdb/commit/2e3178e796567a4639369ed4962f70242dd7cc0e)
+#### Step 6: [Connect to OMDB Api](https://github.com/ga-wdi-exercises/react-omdb/commit/70c28576d35e93331d37a425e45b73127f0713b3)
 
 Now that we can render hard-coded results...
 
@@ -459,7 +459,7 @@ Interesting to note, this problem has not been universally solved, and thus the 
 
 ---
 
-### Step 9: [Add Styles with React](https://github.com/ga-wdi-exercises/react-omdb/commit/b8e07c0fa4310d5a2bf66f7a5d2592037d4ebfe1)
+### Step 7: [Add Styles with React](https://github.com/ga-wdi-exercises/react-omdb/commit/830697fc68dcdccafcae9f73e711103de8d93fc9)
 
 To add the finishing touches to our application, let's take a stab at styling our app with inline-styles and advance our markup with some help from Bootstrap...
 
