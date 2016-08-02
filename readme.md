@@ -245,9 +245,9 @@ Great, now that we know React is working, let's refactor that HelloWorld compone
 
 > Here are some other commits demonstrating how we can complete this part in three steps...
 >
-> 3.1: [Add Static Search UI](https://github.com/ga-wdi-exercises/react-omdb/commit/4c5e83f0146e004cc0321242311bd7b727beaa3f)
-> 3.2: [Wire Up Form With Event Listener](https://github.com/ga-wdi-exercises/react-omdb/commit/7d446952e9ff5d7290caab4783b368d62f7b42b2)
-> 3.3: [Use State to Track Search Query](https://github.com/ga-wdi-exercises/react-omdb/commit/1161c0c3eba93e036261c96288c75b1cf9ddf476)
+> 3.1: [Add Static Search UI](https://github.com/ga-wdi-exercises/react-omdb/commit/4c5e83f0146e004cc0321242311bd7b727beaa3f)  
+> 3.2: [Wire Up Form With Event Listener](https://github.com/ga-wdi-exercises/react-omdb/commit/7d446952e9ff5d7290caab4783b368d62f7b42b2)  
+> 3.3: [Use State to Track Search Query](https://github.com/ga-wdi-exercises/react-omdb/commit/1161c0c3eba93e036261c96288c75b1cf9ddf476)  
 
 Ok, we now have a proper header on the page and our Home component setup, but our movie browser app is lacking the ability to search for movies. Let's change that!
 
