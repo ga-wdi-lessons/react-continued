@@ -8,7 +8,6 @@
 * Explain how React incorporates principles of Functional Programming
 * Identify state in a React app
 * Define the role of Container components and when to use them
-* Utilize React's PropTypes to validate data passed into our components
 * Use jQuery to make AJAX calls in a React app
 * Explain the ways to add styles to a React app
 
@@ -118,19 +117,6 @@ Let's look at the process of a rendering a React Component...
 
 ---
 
-### Group Activity: Identify States while using Google (10 minutes / 0:40)
-
-> 5 minutes exercise. 5 minutes review.
-
-With the idea that state transitions are caused by events in mind...
-* Visit Google's homepage.
-* From there, interact with Google so that you arrive at different states.
-* Keep a running list of these states.
-* Think critically about whether a visual change corresponds to a state change or not.
-
-
----
-
 ## Break (10 minutes / 0:50)
 
 ---
@@ -157,7 +143,7 @@ npm install
 npm start
 ```
 
-Now visit `http://localhost:8080` in the browser. You should see the final version of the  OMDB React application.
+Now visit `http://localhost:3000` in the browser. You should see the final version of the OMDB React application.
 
 Spend two minutes playing with the application. As you're doing that, make note of the following...
 
@@ -171,8 +157,8 @@ Spend two minutes playing with the application. As you're doing that, make note 
 To kick things off, let's add a `HelloWorld` component to make sure things are all wired together.
 
 **Actions**:
-- Use `create-react-app` in the command line to bootstrap a React application.
-- In your app directory, configure your `App.js` and `index.js` files to render a `HelloWorld` component
+- Fork and clone this [the exercise](https://github.com/ga-wdi-exercises/react-omdb/), then run `$ npm i` from the root project directory
+- In your `/src` directory, configure your `App.js` and `index.js` files to render a `HelloWorld` component
 - Run `npm start` and make sure everything is working
 
 <details>
@@ -223,7 +209,7 @@ Great, now that we know React is working, let's refactor that HelloWorld compone
 - Create a Home component that returns a container `<div>` element, which should in turn contain a `<h1>` element.
 - Render that component to the DOM.
 
-> **NOTE:** The solution separates components into different files. Each of these files exports the component definition. This is a good way or organizing a React application, but not the only way. You are welcome to keep all component definitions in a single `index.js` file as well.
+> **NOTE:** The solution separates components into different files. Each of these files exports the component definition. This is a good way of organizing a React application, but not the only way. You are welcome to keep all component definitions in a single `index.js` file as well.
 
 <details>
   <summary><strong>Q: Why do you think we have to use the `className` syntax when defining class attributes for our elements?</strong></summary>
@@ -251,18 +237,18 @@ Great, now that we know React is working, let's refactor that HelloWorld compone
 
 Ok, we now have a proper header on the page and our Home component setup, but our movie browser app is lacking the ability to search for movies. Let's change that!
 
-We are going to construct a Search component. That component will then be rendered later on as a child in the Home component.
+We are going to construct a `Search` component. That component will then be rendered later on as a child in the `Home` component.
 
 **Actions**
 
 First...
-- Create a new file for your Search component.
-- Define a Search component that renders a search form. This can be a simple form with a single input and submit button.
-- Import the Search file to your Home file.
-- Render the Search component in the Home component.
+- Create a new file for your `Search` component.
+- Define a `Search` component that renders a search form. This can be a simple form with a single input and submit button.
+- Import the `Search` file to your `Home` file.
+- Render the `Search` component in the `Home` component.
 
 Then...
-- Define your Search component's initial state. It should have a `query` value that corresponds to a search term.
+- Define your `Search` component's initial state. It should have a `query` value that corresponds to a search term.
 - Define a function that is triggered whenever the user submits the Search form. Start by just logging `"clicked!"` to make sure it works.
   - Use an event listener to attach this function to your form. Try googling `onSubmit`.
 - Define a function that updates your `query` value in state whenever a change is made to the input field. Try googling `onChange`.
@@ -287,7 +273,7 @@ Then...
 <details>
   <summary><strong>Q: What value(s) should we include in our Search component's initial state?</strong></summary>
 
-  > Search query.
+  > A value representing a user's search query.
 
 </details>
 
@@ -328,7 +314,7 @@ If you're using React correctly, you're going to notice you have a lot of compon
 
 #### Step 4: [Move Search Logic to a Container Component](https://github.com/ga-wdi-exercises/react-omdb/commit/8d4d671801909adfdf871c12dbfb6daff28d242c)
 
-Let's look at our Search component, right now, even without worrying about querying the API or displaying the results, our component is starting to get a little heavy due to all our code relating to state. This is a good sign that we have an opportunity to refactor, and move the logic out of the "presenter" component, and into a "container component"
+Let's look at our `Search` component, right now, even without worrying about querying the API or displaying the results, our component is starting to get a little heavy due to all our code relating to state. This is a good sign that we have an opportunity to refactor, and move the logic out of the "presenter" component, and into a "container component"
 
 **Actions**
 
@@ -336,7 +322,7 @@ Let's look at our Search component, right now, even without worrying about query
 - Create a new file for and define your `SearchContainer` component
 - This `SearchContainer` component should handle the business logic for your app's state (i.e., the methods removed from your initial Search component)
 - Load the file containing the `Search` component in the `SearchContainer` file
-- SearchContainer's `render` method should only render a `Search` component. `SearchContainer`'s methods and query value (the search term) should be passed into Search via `.props`.
+- SearchContainer's `render` method should render the `Search` component. `SearchContainer`'s methods and query value (the search term) should be passed into Search via `.props`.
 
 <details>
   <summary><strong>Q: What is our end goal in refactoring our Search components?</strong></summary>
@@ -356,7 +342,7 @@ Let's look at our Search component, right now, even without worrying about query
 
 #### Step 5: [Rendering Hard-Coded Results](https://github.com/ga-wdi-exercises/react-omdb/commit/da936065246dc91a5be826602b3550d05b0adffd)
 
-Now that we have better organization and security in our code, let's work to get results to render after a user searches. In order to do this, we will need to keep track of the state of a user's search (i.e., have they clicked "search" yet or not?).
+Now that we have better organization and clarity in our code, let's work to get results to render after a user searches. In order to do this, we will need to keep track of the state of a user's search (i.e., have they clicked "search" yet or not?).
 
 Continuing to build on the theme of small achievable wins, let's start by only worrying about rendering some hard-coded movies.
 
@@ -375,7 +361,7 @@ Continuing to build on the theme of small achievable wins, let's start by only w
 </details>
 
 <details>
-  <summary><strong>Q: What Javascript tools can you use to dynamically render different UI's from a component. In other words, how can I change what is rendered depending on whether the user has searched or not.</strong></summary>
+  <summary><strong>Q: What Javascript tools can you use to dynamically render different UI's inside a component? In other words, how can I change what is rendered depending on whether the user has searched or not?</strong></summary>
 
   > By wrapping different return statements in a conditional block. If the user has searched, render this. If not, render that.
 
@@ -391,7 +377,7 @@ Continuing to build on the theme of small achievable wins, let's start by only w
 <details>
   <summary><strong>Q: If you had to guess, what's the importance of supplying each individual result `item` with a `key` attribute?</strong></summary>
 
-  > This allows React to keep track of each unique dynamically render child element. The key is treated as the unique identifier and is important in how React  passes data to the child.
+  > This allows React to keep track of each unique dynamically rendered child element. The key is treated as the unique identifier and is important in how React passes data to the child.
 
 </details>
 
@@ -401,7 +387,7 @@ Continuing to build on the theme of small achievable wins, let's start by only w
 
 Because React was developed originally to support view rendering, React does not come with support for `AJAX` calls out of the box. In order to make an ajax request, we need to install another library such as `jQuery` or load in another package / third-party dependency to execute `HTTP` requests.
 
-> **NOTE**: an increasingly popular option via the npm world is a module called [axios](https://github.com/mzabriskie/axios) which can be used to make AJAX calls. It provides a similar interface and behavior to that of `ngResource` in Angular. We do not use this in the solution.
+> **NOTE**: an increasingly popular option via the npm world is a module called [axios](https://github.com/mzabriskie/axios) which can be used to make AJAX calls. It provides a similar interface and behavior to that of `ngResource` in Angular. We do *not* use this in the solution.
 
 #### Step 6: [Connect to OMDB Api](https://github.com/ga-wdi-exercises/react-omdb/commit/70c28576d35e93331d37a425e45b73127f0713b3)
 
@@ -411,7 +397,7 @@ Now that we can render hard-coded results...
 - Visit the [OMDB API documentation](http://omdbapi.com/) to determine how to properly use the API - note that we do not need a key
 - We're going to be querying the API based on title to return a collection of results
 - Load in jQuery and use it to make an AJAX call to the API endpoint using the search query
-- Create an `omdbHelpers` file that will `module.exports` the function definition used to make the API calls to OMDB
+- Define a helper method to query the OMDB database. You can do this in a separate file called `Utils.js` or inside the SearchContainer. Remember to export / import your function if you define it in a separate file.
 - In the SearchContainer component, use your OMDB helper method to query the API when the user submits a search
 - Store the API call response to SearchContainer's state
 - Pass the movie data to the Results component in place of the hard-coded data
@@ -435,7 +421,7 @@ Now that we can render hard-coded results...
 <details>
   <summary><strong>Q: How might we handle bad response data such as no image found...?</strong></summary>
 
-  > We can parse the initial response, check for bad inputs, and modify the data  to set a valid default, the return the new results
+  > We can parse the initial response, check for bad inputs, and modify the data to set a valid default, then return the new results
 
 </details>
 
@@ -461,19 +447,18 @@ Interesting to note, this problem has not been universally solved, and thus the 
 
 ### Step 7: [Add Styles with React](https://github.com/ga-wdi-exercises/react-omdb/commit/830697fc68dcdccafcae9f73e711103de8d93fc9)
 
+> **Reminder**: `class` is a protected keyword in React, in order to add a class attribute to an element use the keyword `className`
+
 To add the finishing touches to our application, let's take a stab at styling our app with inline-styles and advance our markup with some help from Bootstrap...
 
 **Action**
-- Install `css-loader` and `style-loader` loaders with npm
-- Define a new loader in your webpack configuration that targets any css files and applies the css and style loader transformations
-- Load in Bootstrap CDN in `app/index.html`
+- Load in Bootstrap CDN in `index.html`
 - Modify UI to include Bootstrap classes
 - Create a `styles` directory and make a file for your CSS rule definitions - this will be written in Javascript!
 - Load in that file in any component and then use that to apply inline styling
 
 <details>
-  <summary><strong>Q: What are some tradeoffs for using inline-styles to style React components?</strong></summary>
-
+  <summary><strong>What are some tradeoffs for using inline-styles to style React components?</strong></summary>
 </details>
 
 ---
