@@ -15,7 +15,7 @@
 
 ## Framing (20 minutes / 0:20)
 
-In today's class you're going to get practice building a React app that's more complex than yesterday's simple blog example. When building an app like this, it's important to keep certain development practices and paradigms in mind so that we write maintainable code.
+In today's class you're going to get practice building a React app that's more complex than the intro's simple blog example. When building an app like this, it's important to keep certain development practices and paradigms in mind so that we write maintainable code.
 
 ### F.I.R.S.T. Components
 
@@ -35,6 +35,8 @@ Building in React is a fundamental shift from how we have developed previously. 
 
 </details>
 
+<br>
+
 A React component is built to expect an input and render a UI with it. More importantly, a (well-structured) component only receives data specific to its purpose. For example, our `Post` component from the blog example will only receive `title`, `author` and the like as inputs -- nothing else.
 
 While this doesn't sound too groundbreaking, it is very different from the OOP principles we've gotten used to. This is because React follows a more **functional** approach to programming. For React components under this approach, **the same input will always produce the same output**.
@@ -45,19 +47,19 @@ You can build an app in a lot of ways, but if you want to look at some of the be
 
 Components should do one thing and do it well. One thing that's hard to adjust to in React coming from an OOP background is packing too much information into a component.
 
-> Think back to the Post component from yesterday's class.
+> Think back to the Post component from the intro's class.
 
 #### Independent
 
 Components should increase cohesion and reduce coupling. Behavior in one component should not impact the behavior of another. In other words, components should not rely on one another.
 
-> But they should compliment one another, just like our Comment component did for Post in yesterday's class.
+> But they should compliment one another, just like our Comment component did for Post in the intro's class.
 
 #### Reusable
 
 Components should be written in a way that reduces the duplication of code.
 
-> We could have nested yesterday's Comment in a component other than Post.
+> We could have nested the intro's Comment in a component other than Post.
 
 #### Small
 
@@ -125,7 +127,7 @@ Let's look at the process of a rendering a React Component...
 
 For this exercise, we are going to build a React app from scratch that will serve as a movie browser application, allowing users to enter a search term, and view results of movies via the OMDB api.
 
-The desired outcome is for you to take a look at the solution and from there devise your own implementation. We have also included a a step-by-step walkthrough of how to build out the demoed solution below.
+The desired outcome is for you to take a look at the solution and from there devise your own implementation. We have also included a step-by-step walkthrough of how to build out the demoed solution below.
 
 ---
 
@@ -162,14 +164,14 @@ To kick things off, let's add a `HelloWorld` component to make sure things are a
 - Run `npm start` and make sure everything is working
 
 <details>
-  <summary><strong>Q: What dependency do we need to load in whenever we want to create a component definition?</strong></summary>
+  <summary><strong>Q: What dependencies do we need to load in whenever we want to create a component definition?</strong></summary>
 
-  > React
+  > React and Component
 
 </details>
 
 <details>
-  <summary><strong>Q: How do we go about starting to define a React component?</strong></summary>
+  <summary><strong>Q: How do we start our new component definitions?</strong></summary>
 
   ```js
   class ComponentName extends Component {
@@ -221,7 +223,7 @@ Great, now that we know React is working, let's refactor that HelloWorld compone
 <details>
   <summary><strong>Q: How would you summarize the Home component's responsibility?</strong></summary>
 
-  > A: This will be our application's root element, the parent in which we will nest the rest of our child components. In charge of render what the user sees on initial page load.
+  > A: This will be our application's root element, the parent in which we will nest the rest of our child components. In charge of rendering what the user sees on initial page load.
 
 </details>
 
@@ -308,7 +310,11 @@ Then...
 
 When building in React, it's important to keep in mind some of the principles of what a component should be. According to React's developers, React components should be FIRST: focused, independent, reusable, small, and testable. In order to help keep components slim, a good practice is to move as much of the business logic surrounding a component's state to a container component.
 
-If you're using React correctly, you're going to notice you have a lot of components that simply take in some data via props and output some UI - that is, components with just a render method. The reason for this is because a really great paradigm to get used to is separating your components into container components and presentational components, with presentational components optionally taking in some data and rendering a view.
+If you're using React correctly, you're going to notice you have a lot of components that simply take in some data via props and output some UI - that is, **components with just a render method**. The reason for this is because a really great paradigm to get used to is separating your components into **container components** and **presentational components**, with presentational components optionally taking in some data and rendering a view.
+
+Let's look at a quick example of how we can begin to organize React apps following this paradigm:
+
+![react-hierarchy](./react-component-hierarchy.png)
 
 ---
 
