@@ -194,9 +194,9 @@ const results = [
 First we will build a static version of the app passing all of our data by `props`.
 This makes it much easier to avoid getting bogged down in tricky details of functionality while implementing the visual appearance of the UI.
 
-#### [Home component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/4446eb64dd7fb80dacf263b06f793ef092b8fe74)
-#### [Search component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/345ec65715d5840e43de9c526b32041568754d0f)
-#### [Results component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/8ab1c601e3b15c69ff5cfb7f958124ec68cef9db)
+1. [Home component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/4446eb64dd7fb80dacf263b06f793ef092b8fe74)
+2. [Search component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/345ec65715d5840e43de9c526b32041568754d0f)
+3. [Results component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/8ab1c601e3b15c69ff5cfb7f958124ec68cef9db)
 
 ## Break - 10 min
 
