@@ -116,6 +116,8 @@ For this exercise, we are going to build a React app from scratch that will serv
 
 The desired outcome is for you to take a look at the solution and from there devise your own implementation. We have also included a step-by-step walkthrough of how to build out the demoed solution below.
 
+Go ahead and clone [React TVMaze](https://github.com/ga-wdi-exercises/react-tvmaze/) now. This will be the code we start with.
+
 ### [Start with a Mock](https://facebook.github.io/react/docs/thinking-in-react.html#start-with-a-mock)
 First step in creating a React app is to start with a mock and some sample data.
 These are the two views for our app:
@@ -194,11 +196,16 @@ const results = [
 First we will build a static version of the app passing all of our data by `props`.
 This makes it much easier to avoid getting bogged down in tricky details of functionality while implementing the visual appearance of the UI.
 
+
 1. [Home component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/4446eb64dd7fb80dacf263b06f793ef092b8fe74)
 2. [Search component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/345ec65715d5840e43de9c526b32041568754d0f)
 3. [Results component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/8ab1c601e3b15c69ff5cfb7f958124ec68cef9db)
 
+NB: Home should be passed two props for the static version of this app: `shows` and `hasSearched`.
+
 ## Break - 10 min
+
+## Sync up - 20 min
 
 ### [Identify the Minimal Representation of UI State](https://facebook.github.io/react/docs/thinking-in-react.html#step-3-identify-the-minimal-but-complete-representation-of-ui-state)
 
