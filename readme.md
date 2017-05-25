@@ -58,7 +58,7 @@ Because the same input will always produce the same output, components are easil
 
 > If you're interested, [Jest](https://facebook.github.io/jest/docs/tutorial-react.html) is a popular testing library for React.
 
-## State (10 minutes / 0:30)
+## [State](https://facebook.github.io/react/docs/state-and-lifecycle.html) (10 minutes / 0:30)
 
 So why do we follow all these principles? If not, it is easy to lose control of our application's state.
 
