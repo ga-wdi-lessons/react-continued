@@ -106,7 +106,7 @@ Let's look at the process of a rendering a React Component...
 
 ---
 
-## Break (10 minutes / 0:50)
+## Break (10 minutes / 0:40)
 
 ---
 
@@ -121,14 +121,14 @@ First step in creating a React app is to start with a mock and some sample data.
 These are the two views for our app:
 
 #### The Search Page
-![search page](./images/search.png)
+![search page](https://cloud.githubusercontent.com/assets/7882341/26462830/5af1a1ce-4150-11e7-9870-eb45ee12816a.png)
 
 I've identified two components on the search page.
 1. The top level component, which we'll call `Home`, is boxed in magenta.
 2. The search input, a sub-component of `Home`, in yellow we'll call `Search`.
 
 #### The Results Page
-![results page](./images/results.png)
+![results page](https://cloud.githubusercontent.com/assets/7882341/26462829/5aee3d7c-4150-11e7-89cd-5bcd4147f3bc.png)
 
 I've identified three components on this page.
 1. The same `Home` top level component.
