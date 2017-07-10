@@ -8,13 +8,13 @@
 * Use jQuery to make AJAX calls in a React app
 * Describe ways to add styles to a React app
 
-## Framing
+## Framing (15 minutes / 0:15)
 
 Today's lesson will revolve building an app called React TVMaze. This process will be broken up into multiple exercises. Prior to each exercise, we will either dive deeper into React concepts you have already learned or explore new ones.
 
 But before we start coding, let's talk about the fundamental unit of any React app...
 
-## [Components](https://facebook.github.io/react/docs/components-and-props.html) (10 minutes / 0:10)
+## [Components](https://facebook.github.io/react/docs/components-and-props.html)
 
 Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
 
@@ -56,7 +56,7 @@ Because the same input will always produce the same output, components are easil
 
 > If you're interested, [Jest](https://facebook.github.io/jest/docs/tutorial-react.html) is a popular testing library for React.
 
-## [State](https://facebook.github.io/react/docs/state-and-lifecycle.html) (10 minutes / 0:30)
+## [State](https://facebook.github.io/react/docs/state-and-lifecycle.html)
 
 So why do we follow all these principles? If not, it is easy to lose control of our application's state.
 
@@ -118,11 +118,9 @@ Let's look at the process of a rendering a React Component...
 
 ![](./react-render.png)
 
-## Break
-
 ## Exercise: React TVMaze
 
-For this exercise, we are going to build a React app from scratch that will serve as a movie browser application, allowing users to enter a search term, and view results of tv shows via the OMDB api.
+For this exercise, we are going to build a React app from scratch that will serve as a movie browser application, allowing users to enter a search term, and view results of tv shows via the TVMaze API.
 
 The desired outcome is for you to take a look at the solution and from there devise your own implementation. We have also included a step-by-step walkthrough of how to build out the demoed solution below.
 
@@ -139,7 +137,7 @@ $ npm run start
 
 First step in creating a React app is to start with a mock and some sample data.
 
-### You Do: Identify Components (10 minutes)
+### You Do: Identify Components (10 minutes / 0:25)
 
 > 5 minutes exercise. 5 minutes review.
 
@@ -245,37 +243,50 @@ const results = [
 ]
 ```
 
-### You Do: [Build a Static Version of the App](https://facebook.github.io/react/docs/thinking-in-react.html#step-2-build-a-static-version-in-react) (30 minutes)
+## You Do: [Build a Static Version of the App](https://facebook.github.io/react/docs/thinking-in-react.html#step-2-build-a-static-version-in-react) (40 minutes / 1:05)
 
-> 20 minutes exercise. 10 minutes review.
+> 25 minutes exercise. 15 minutes review.
 
 First we will build a static version of the app passing all of our data by `props`. This makes it much easier to avoid getting bogged down in tricky details of functionality while implementing the visual appearance of the UI.
 
 Create these three components in the following order...
 
-#### [Home](https://github.com/ga-wdi-exercises/react-tvmaze/commit/4446eb64dd7fb80dacf263b06f793ef092b8fe74)
+### [Home](https://github.com/ga-wdi-exercises/react-tvmaze/commit/4446eb64dd7fb80dacf263b06f793ef092b8fe74)
+
+#### In `Home.js`...
 
 - Instead of creating a brand new component, we can rename `App` in all the relevant places so that it is called `Home`
 - The UI of the `Home` component should be very simple for the time being -- a `<div>` that contains a `<h1>` tag
+
+#### In `index.js`...
+
 - If you have not already, paste the sample data in `index.js` right below the `import` statements
-- In `index.js`' `ReactDOM.render` statement, make sure to pass in the sample data as props to `<Home />` using a `shows` attribute
+- In the `ReactDOM.render` statement, make sure to pass in the sample data as props to `<Home />` using a `shows` attribute
 
-#### [Search](https://github.com/ga-wdi-exercises/react-tvmaze/commit/345ec65715d5840e43de9c526b32041568754d0f)
+### [Search](https://github.com/ga-wdi-exercises/react-tvmaze/commit/345ec65715d5840e43de9c526b32041568754d0f)
 
-- Create a new `Search` component
+#### In `Search.js`...
+
+- Define a `Search` component
 - The UI of `Search` should be a div that contains a form with an input field and a submit button
-- In `Home.js`, import `Search` and include it in the `Home` UI (i.e., it should contain `<Search />` somewhere)
 
-#### [Results](https://github.com/ga-wdi-exercises/react-tvmaze/commit/8ab1c601e3b15c69ff5cfb7f958124ec68cef9db)
+#### In `Home.js`...
 
-In a new `Results.js` file...
+- Import `Search` and include it in the `Home` UI (i.e., it should contain `<Search />` somewhere)
+
+### [Results](https://github.com/ga-wdi-exercises/react-tvmaze/commit/8ab1c601e3b15c69ff5cfb7f958124ec68cef9db)
+
+#### In `Results.js`...
+
 - Define a `Results` component
 - For the time being, it's UI should only render a `<div>`
 
-In `index.js`...
+#### In `index.js`...
+
 - In `ReactDOM.render`, update `<Home shows={shows}/>` so that it also takes a `hasSearched` attribute set to `false`
 
-In `Home.js`...
+#### In `Home.js`...
+
 - Import `Results`
 - Let's implement some conditional rendering in the `Home` UI...
   - If `this.props.hasSearched` is false, render `<Search />`
@@ -283,7 +294,8 @@ In `Home.js`...
 
 > [Documentation on conditional rendering in React](https://facebook.github.io/react/docs/conditional-rendering.html)
 
-Back in `Results.js`...
+#### Back in `Results.js`...
+
 - In `render` but before the `return` statement, define a `results` variable.
 - This `results` variable will contain the product of `this.props.shows.map` (i.e., a map statement being called on our sample data)
 - Each iteration of the `.map` statement should return a `<div>`
