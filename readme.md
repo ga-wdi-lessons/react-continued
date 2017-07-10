@@ -390,7 +390,7 @@ We are going to create a `SearchContainer` component to manage `query`, `shows` 
 
 > By this point, [your app should look something like this](https://github.com/ga-wdi-exercises/react-tvmaze/tree/474044ff43b809c001595c7b51842e82731d2fb0)
 
-## [Add Inverse Data Flow](https://facebook.github.io/react/docs/thinking-in-react.html#step-5-add-inverse-data-flow) (15 minutes / 2:20)
+## [Add Inverse Data Flow](https://facebook.github.io/react/docs/thinking-in-react.html#step-5-add-inverse-data-flow)
 
 The last step is passing callbacks through props to presentational components to provide behavior.
 We will need three functions defined on the `SearchContainer` component to provide necessary behavior to `Search` and `Results`...
@@ -399,7 +399,7 @@ We will need three functions defined on the `SearchContainer` component to provi
 2. `onSubmitQuery` for switching `hasSearched` so that `Results` are displayed and making an AJAX call for searched TV shows
 3. `onSearchAgain` for switching `hasSearched` so that the search bar is displayed again
 
-### `onSubmitQuery`
+### We Do: `onSubmitQuery` (15 minutes / 2:20)
 
 Let's first illustrate this concept by defining an `onSubmitQuery` method. For now, we will focus on switching `hasSearched` from `false` to `true`. We will save making the AJAX call for searched TV shows for later.
 
@@ -468,13 +468,127 @@ class Search extends Component {
 
 When your done with this section, [your code should look something like this](https://github.com/ga-wdi-exercises/react-tvmaze/tree/07a579736dd40488dbab943c695e329ab61ae2ba).
 
-## Replace Mock Data with an AJAX Request (10 minutes / 2:30)
+## You Do: `handleSearchInput`
+
+Your task: define a `handleSearchInput` method in `SearchContainer`. The purpose of this method is to update the `query` value in state whenever the user changes the input (i.e., adds or removes a character) in the app's search field.
+
+#### In `SearchContainer.js`...
+
+Define a `handleSearchInput` method in the component definition. It should use `.setState` to set `query` to whatever is entered into the search field.
+
+> Hint: the value in the search field will be accessible via an event object.
+
+<details>
+  <summary><strong>Click to reveal solution...</strong></summary>
+
+  <br>
+
+  ```js
+  class SearchContainer extends Component {
+    // ...
+    handleSearchInput(e) {
+      this.setState({
+        query: e.target.value
+      })
+    }
+    // ...
+  }
+  ```
+
+  > Because the method will be trigger by a change event, the `e` parameter is automatically populated with an event object.
+
+</details>
+
+<br>
+
+Because this method will be triggered when the user modifies `Search`'s input field, we need to pass `handleSearchInput` down to `Search` via props...
+
+<details>
+  <summary><strong>Click to reveal solution...</strong></summary>
+
+  <br>
+
+  ```js
+  class SearchContainer extends Component {
+    // ...
+    render(){
+      const toRender = this.state.hasSearched
+        ? <Results shows={this.state.shows} />
+        : <Search query={this.state.query} handleSearchInput={this.handleSearchInput}
+        onSubmitQuery={this.onSubmitQuery}  />
+      return <div>{toRender}</div>
+    }
+  }
+  ```
+
+</details>
+
+<br>
+
+We also need to update the `constructor` so that the context of `handleSearchInput` is preserved when it is later triggered in `Search`...
+
+<details>
+  <summary><strong>Click to reveal solution...</strong></summary>
+
+  <br>
+
+  ```js
+  class SearchContainer extends Component {
+    constructor(props){
+      super(props)
+      this.state = { ... }
+      this.onSubmitQuery = this.onSubmitQuery.bind(this)
+      this.handleSearchInput = this.handleSearchInput.bind(this)
+    }
+    // ...
+  }
+  ```
+
+</details>
+
+<br>
+
+#### In `Search.js`
+
+Now we have to update the `Search` UI so that when the content of the input field is modified, the `query` value in `SearchContainer`'s state is updated. This means triggering the previously-defined `handleSearchInput` method, which we have passed down from `SearchContainer` via props...
+
+> Hint: `onSubmit` does not work as an event attribute this time around. Try Googling what event attribute corresponds with modifying a text field...
+
+<details>
+  <summary><strong>Click to reveal solution...</strong></summary>
+
+  <br>
+
+  ```js
+  class Search extends Component {
+    render() {
+      return (
+        <form onSubmit={this.props.onSubmitQuery}>
+          <input type="text" placeholder="Enter search term" onChange={this.props.handleSearchInput} />
+          <button type="submit">Submit</button>
+        </form>
+      )
+    }
+  }
+  ```
+
+</details>
+
+<br>
+
+You can test this all works by placing `console.log(this.state.query)` in the `handleSearchInput` method. You should see this value being updated as you change the contents of the input field.
+
+> You may need to place this inside of a callback to `setState` since updating state actually happens asynchronously. [More on that in the React documentation](https://facebook.github.io/react/docs/react-component.html#setstate).
+
+When your done with this section, [your code should look something like this](https://github.com/ga-wdi-exercises/react-tvmaze/commit/591d4306fb82c1bad5a733581d879674fde11fa1).
+
+## Replace Mock Data with an AJAX Request (If Time Allows)
 
 Finally, we will replace the mock data with an actual AJAX request and update the `onSubmitQuery` to update state in handling the resolved promise.
 
 #### [AJAX request](https://github.com/ga-wdi-exercises/react-tvmaze/commit/8bb4f4edd5a98261b2a89116e40ca20e9f025269)
 
-## Style in React (Bonus)
+## Style in React (If Time Allows)
 
 When it comes to adding styles to React, there is a bit of debate over what's the best practice. Facebook's official docs and recommendations are to write stylesheets that treat your CSS rule declarations as properties on one big Javascript object that can be passed into components via inline styles.
 
