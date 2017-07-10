@@ -397,7 +397,6 @@ We will need three functions defined on the `SearchContainer` component to provi
 
 1. `handleSearchInput` for managing changes to the input field
 2. `onSubmitQuery` for switching `hasSearched` so that `Results` are displayed and making an AJAX call for searched TV shows
-3. `onSearchAgain` for switching `hasSearched` so that the search bar is displayed again
 
 ### We Do: `onSubmitQuery` (15 minutes / 2:20)
 
@@ -468,7 +467,7 @@ class Search extends Component {
 
 When your done with this section, [your code should look something like this](https://github.com/ga-wdi-exercises/react-tvmaze/tree/07a579736dd40488dbab943c695e329ab61ae2ba).
 
-## You Do: `handleSearchInput`
+## You Do: `handleSearchInput` (Remaining Time)
 
 Your task: define a `handleSearchInput` method in `SearchContainer`. The purpose of this method is to update the `query` value in state whenever the user changes the input (i.e., adds or removes a character) in the app's search field.
 
@@ -582,13 +581,11 @@ You can test this all works by placing `console.log(this.state.query)` in the `h
 
 When your done with this section, [your code should look something like this](https://github.com/ga-wdi-exercises/react-tvmaze/commit/591d4306fb82c1bad5a733581d879674fde11fa1).
 
-## Replace Mock Data with an AJAX Request (If Time Allows)
+## Bonus You Do: `handleSearchAgain`
 
-Finally, we will replace the mock data with an actual AJAX request and update the `onSubmitQuery` to update state in handling the resolved promise.
+Add a button to the `Results` UI that, when clicked, switches the view back to `Search`.
 
-#### [AJAX request](https://github.com/ga-wdi-exercises/react-tvmaze/commit/8bb4f4edd5a98261b2a89116e40ca20e9f025269)
-
-## Style in React (If Time Allows)
+## Bonus: Style in React
 
 When it comes to adding styles to React, there is a bit of debate over what's the best practice. Facebook's official docs and recommendations are to write stylesheets that treat your CSS rule declarations as properties on one big Javascript object that can be passed into components via inline styles.
 
