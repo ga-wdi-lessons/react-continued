@@ -304,24 +304,34 @@ Create these three components in the following order...
   - A `<p>` that displays the show name included in the sample data
 - Update the `Results` UI so that it displays whatever is stored in the `results` variable, which at this point should be an array of `<div>`s
 
-#### CSS (Optional)
+### CSS (Optional)
 
 - Create stylesheets for each component, making sure to import them at the top of the page
 - You can use the CSS found in the component solutions: [Home](https://github.com/ga-wdi-exercises/react-tvmaze/commit/4446eb64dd7fb80dacf263b06f793ef092b8fe74), [Search](https://github.com/ga-wdi-exercises/react-tvmaze/commit/345ec65715d5840e43de9c526b32041568754d0f) and [Results](https://github.com/ga-wdi-exercises/react-tvmaze/commit/8ab1c601e3b15c69ff5cfb7f958124ec68cef9db)
-  - If you do so, make sure to include the correct CSS classes in your component UIs
 
-## Break (10 minutes)
+> If you do use the solution stylesheets, make sure to include the correct CSS classes in your UIs.
 
-## [Identify the Minimal Representation of UI State](https://facebook.github.io/react/docs/thinking-in-react.html#step-3-identify-the-minimal-but-complete-representation-of-ui-state)
+## Break (10 minutes / 1:15)
 
-For our app to work we need...
-- `movies` (movies to show)
-- `query` (title being searched)
-- `hasSearched` (boolean determining wether to show the search input or the results)
+## [Identify the Minimal Representation of UI State](https://facebook.github.io/react/docs/thinking-in-react.html#step-3-identify-the-minimal-but-complete-representation-of-ui-state) (5 minutes / 1:20)
 
-All of these are subject to change over time and so each must be kept in state.
+At the moment all of our data is being passed through our app as props. We know, however, that we will have data that changes as a user interacts with the app. That information needs to leave in our application's state.
 
-### [Identify Where Your State Should Live](https://facebook.github.io/react/docs/thinking-in-react.html#step-4-identify-where-your-state-should-live)
+<details>
+  <summary><strong>What information needs to live in state? This may include a value(s) that we have not yet included in our code...</strong></summary>
+
+  <br>
+
+  For our app to work we need...
+  - `movies` (movies to show)
+  - `query` (title being searched)
+  - `hasSearched` (boolean determining wether to show the search input or the results)
+
+</details>
+
+<br>
+
+## [Identify Where Your State Should Live](https://facebook.github.io/react/docs/thinking-in-react.html#step-4-identify-where-your-state-should-live) (5 minutes / 1:25)
 
 Central to considering where state lives is the idea of **one way data flow**. The React documentation describes this step as "often the most challenging part for newcomers to understand".
 
@@ -329,15 +339,15 @@ Our task here is to look for the component for each aspect of state that could b
 
 In our app, `query` is needed to keep track of what is going on in the search box, as well as to make the actual query.
 
-This request will return the movies to the same component which managed the query so `movies` should be managed by the same component.
+This request will return the movies to the same component which managed the query, so `movies` should be managed by the same component.
 
-Finally, we have our `hasSearched` flag which we know to set when we make the request so these should all live in the same place.
+Finally, we have our `hasSearched` flag which we know to set when we make the request, so these should all live in the same place.
 
 Currently, the parent to the `Results` and `Search` components is `Home`.
 
 We don't want to clutter our top level component as our app grows. This segues nicely into the idea of Container and Presentational Components.
 
-#### [Container & Presentational Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+## [Container & Presentational Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) (15 minutes / 1:50)
 
 The above workflow has led to the popular component architecture of distinguishing container and presentational components.
 
@@ -349,7 +359,9 @@ This leads to a very nice division where state management and presentation are c
 
 We are going to create a `SearchContainer` to manage `query`, `shows` and `hasSearched`.
 
-### [Add Inverse Data Flow](https://facebook.github.io/react/docs/thinking-in-react.html#step-5-add-inverse-data-flow)
+## Break (10 minutes / 2:00)
+
+## [Add Inverse Data Flow](https://facebook.github.io/react/docs/thinking-in-react.html#step-5-add-inverse-data-flow) (15 minutes / 2:15)
 
 The last step is passing callbacks through props to presentational components to provide behavior.
 We will need three functions defined on the `SearchContainer` component to provide necessary behavior to `Search` and `Results`...
@@ -365,13 +377,13 @@ For now we'll just hard code the mock data.
 
 #### [SearchContainer component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/1c896c5a975ea9d1f6fd07bbd655caf1d1f9f9ae)
 
-### Replace Mock Data with an AJAX Request
+## Replace Mock Data with an AJAX Request (10 minutes / 2:25)
 
 Finally, we will replace the mock data with an actual AJAX request and update the `onSubmitQuery` to update state in handling the resolved promise.
 
 #### [AJAX request](https://github.com/ga-wdi-exercises/react-tvmaze/commit/8bb4f4edd5a98261b2a89116e40ca20e9f025269)
 
-### BONUS: Style in React
+## Style in React (Bonus)
 
 When it comes to adding styles to React, there is a bit of debate over what's the best practice. Facebook's official docs and recommendations are to write stylesheets that treat your CSS rule declarations as properties on one big Javascript object that can be passed into components via inline styles.
 
