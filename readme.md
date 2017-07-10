@@ -307,11 +307,13 @@ Create these three components in the following order...
 ### CSS (Optional)
 
 - Create stylesheets for each component, making sure to import them at the top of the page
-- You can use the CSS found in the component solutions: [Home](https://github.com/ga-wdi-exercises/react-tvmaze/commit/4446eb64dd7fb80dacf263b06f793ef092b8fe74), [Search](https://github.com/ga-wdi-exercises/react-tvmaze/commit/345ec65715d5840e43de9c526b32041568754d0f) and [Results](https://github.com/ga-wdi-exercises/react-tvmaze/commit/8ab1c601e3b15c69ff5cfb7f958124ec68cef9db)
+- You can use the stylesheets found in [this commit](https://github.com/ga-wdi-exercises/react-tvmaze/tree/047ab74ca2ef87d31555917ab7d66fef34bdd80f)
 
 > If you do use the solution stylesheets, make sure to include the correct CSS classes in your UIs.
 
 ## Break (10 minutes / 1:15)
+
+> By this point, [your app should look something like this](https://github.com/ga-wdi-exercises/react-tvmaze/tree/047ab74ca2ef87d31555917ab7d66fef34bdd80f)
 
 ## [Identify the Minimal Representation of UI State](https://facebook.github.io/react/docs/thinking-in-react.html#step-3-identify-the-minimal-but-complete-representation-of-ui-state) (5 minutes / 1:20)
 
@@ -386,19 +388,58 @@ We are going to create a `SearchContainer` component to manage `query`, `shows` 
 
 ## Catch-Up & Break (15 minutes / 2:05)
 
+> By this point, [your app should look something like this](https://github.com/ga-wdi-exercises/react-tvmaze/tree/474044ff43b809c001595c7b51842e82731d2fb0)
+
 ## [Add Inverse Data Flow](https://facebook.github.io/react/docs/thinking-in-react.html#step-5-add-inverse-data-flow) (15 minutes / 2:20)
 
 The last step is passing callbacks through props to presentational components to provide behavior.
 We will need three functions defined on the `SearchContainer` component to provide necessary behavior to `Search` and `Results`...
 
 1. `handleSearchInput` for managing changes to the input field
-2. `onSubmitQuery` for kicking of the ajax request
-3. `onSearchAgain` to set state back to render the search bar
+2. `onSubmitQuery` for switching `hasSearched` so that `Results` are displayed and making an AJAX call for searched TV shows
+3. `onSearchAgain` for switching `hasSearched` so that the search bar is displayed again
 
-> What is the point of all of these `.bind(this)` statements?
+### `onSubmitQuery`
 
-We are also going to add a `Utils.js` file where we ultimately will make the request to TVMaze.
-For now we'll just hard code the mock data.
+Let's first illustrate this concept by defining an `onSubmitQuery` method. For now, we will focus on switching `hasSearched` from `false` to `true`. We will save making the AJAX call for searched TV shows for later.
+
+#### In `SearchContainer.js`...
+
+- Define an `onSubmitQuery` method in the component definition. It should use `.setState` to set `hasSearched` to `true`.
+- Because this method will be triggered when the user interacts with the `Search` component, we need to pass `onSubmitQuery` down to `Search` via props. We can do this with methods similarly to how we pass down data values...
+
+```js
+class SearchContainer extends Component {
+  // ...
+  render(){
+    const toRender = this.state.hasSearched
+      ? <Results shows={this.state.shows} />
+      : <Search query={this.state.query} onSubmitQuery={this.onSubmitQuery} />
+    return <div>{toRender}</div>
+  }
+}
+```
+
+We also need to update the `constructor` so that the context of `onSubmitQuery` is preserved (i.e., `this` = `SearchContainer`) when it is later triggered in `Search`...
+
+```js
+class SearchContainer extends Component {
+  constructor(props){
+    super(props)
+    this.state = { ... }
+    this.onSubmitQuery = this.onSubmitQuery.bind(this)
+  }
+  // ...
+}
+```
+
+#### In `Search.js`
+
+Now we have to update the `Search` UI so that when a search is submitted, the view is switched from `Search` to `Results`. In this situation that means triggering the previously-defined `onSubmitQuery` method, which we have passed down from `SearchContainer` via props...
+
+```js
+// In progress...
+```
 
 #### [SearchContainer component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/1c896c5a975ea9d1f6fd07bbd655caf1d1f9f9ae)
 
