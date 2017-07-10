@@ -361,7 +361,7 @@ This leads to a very nice division where state management and presentation are c
 
 We are going to create a `SearchContainer` component to manage `query`, `shows` and `hasSearched`. `SearchContainer` will then pass state down to the `Search` and `Results` components via props.
 
-### Steps
+### We Do: Implement `SearchContainer`
 
 #### In a new `SearchContainer.js` file...
 
@@ -398,7 +398,7 @@ We will need three functions defined on the `SearchContainer` component to provi
 1. `handleSearchInput` for managing changes to the input field
 2. `onSubmitQuery` for switching `hasSearched` so that `Results` are displayed and making an AJAX call for searched TV shows
 
-### We Do: `onSubmitQuery` (15 minutes / 2:20)
+## We Do: `onSubmitQuery` (15 minutes / 2:20)
 
 Let's first illustrate this concept by defining an `onSubmitQuery` method. For now, we will focus on switching `hasSearched` from `false` to `true`. We will save making the AJAX call for searched TV shows for later.
 
