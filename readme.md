@@ -323,7 +323,7 @@ At the moment all of our data is being passed through our app as props. We know,
   <br>
 
   For our app to work we need...
-  - `movies` (movies to show)
+  - `shows` (shows to display)
   - `query` (title being searched)
   - `hasSearched` (boolean determining wether to show the search input or the results)
 
@@ -339,7 +339,7 @@ Our task here is to look for the component for each aspect of state that could b
 
 In our app, `query` is needed to keep track of what is going on in the search box, as well as to make the actual query.
 
-This request will return the movies to the same component which managed the query, so `movies` should be managed by the same component.
+This request will return the shows to the same component which managed the query, so `shows` should be managed by the same component.
 
 Finally, we have our `hasSearched` flag which we know to set when we make the request, so these should all live in the same place.
 
@@ -357,7 +357,7 @@ Container components are components whose job it is to exclusively manage state 
 
 This leads to a very nice division where state management and presentation are cleanly separated.
 
-We are going to create a `SearchContainer` to manage `query`, `shows` and `hasSearched`.
+We are going to create a `SearchContainer` component to manage `query`, `shows` and `hasSearched`. `SearchContainer` will then pass state down to the `Search` and `Results` components via props.
 
 ## Break (10 minutes / 2:00)
 
