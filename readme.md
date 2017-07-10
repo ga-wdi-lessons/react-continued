@@ -351,17 +351,42 @@ We don't want to clutter our top level component as our app grows. This segues n
 
 The above workflow has led to the popular component architecture of distinguishing container and presentational components.
 
-Presentational components are components that render themselves based solely on the information that they receive from props. At this point, all of our components are presentational.
+**Presentational components** are components that render themselves based solely on the information that they receive from props. At this point, all of our components are presentational.
 
-Container components are components whose job it is to exclusively manage state and as props any data needed by its presentational components.
+**Container components** are components whose job it is to exclusively manage state and as props any data needed by its presentational components.
 
 This leads to a very nice division where state management and presentation are cleanly separated.
 
 We are going to create a `SearchContainer` component to manage `query`, `shows` and `hasSearched`. `SearchContainer` will then pass state down to the `Search` and `Results` components via props.
 
-## Break (10 minutes / 2:00)
+### Steps
 
-## [Add Inverse Data Flow](https://facebook.github.io/react/docs/thinking-in-react.html#step-5-add-inverse-data-flow) (15 minutes / 2:15)
+#### In a new `SearchContainer.js` file...
+
+- Import React as well as the `Search` and `Results` components
+- Define a `SearchContainer` component and give it a `constructor` function
+- The `constructor` function should define an initial state containing the following values...
+  - `shows`: this should be set to the sample data -- you can move it into this file
+  - `hasSearched`: this should be initialized as false
+  - `query`: this should be initialized as an empty string
+- For now, have the UI be a single `<div>`
+
+#### In `Home.js`...
+
+- Import the `SearchContainer` component
+- Copy the code that handles the conditional rendering of `<Search />` and `<Results />` -- we're going to use it elsewhere
+- Once you've done that, update the UI so that it only renders the `<h1>` and `<SearchContainer />`.
+- The conditional rendering will be delegated to the `SearchContainer` component
+
+#### In `SearchContainer.js`...
+
+- Paste the conditional logic that controls whether the user sees `<Search />` or `<Results />` into the render method, making sure that its dependent on the `hasSearched` value in state (not props)
+- Update `<Search />` in the UI so that it takes in `this.state.query` via props as `query`
+- Update `<Results />` in the UI so that it takes in `this.state.shows` via props as `shows`
+
+## Catch-Up & Break (15 minutes / 2:05)
+
+## [Add Inverse Data Flow](https://facebook.github.io/react/docs/thinking-in-react.html#step-5-add-inverse-data-flow) (15 minutes / 2:20)
 
 The last step is passing callbacks through props to presentational components to provide behavior.
 We will need three functions defined on the `SearchContainer` component to provide necessary behavior to `Search` and `Results`...
@@ -377,7 +402,7 @@ For now we'll just hard code the mock data.
 
 #### [SearchContainer component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/1c896c5a975ea9d1f6fd07bbd655caf1d1f9f9ae)
 
-## Replace Mock Data with an AJAX Request (10 minutes / 2:25)
+## Replace Mock Data with an AJAX Request (10 minutes / 2:30)
 
 Finally, we will replace the mock data with an actual AJAX request and update the `onSubmitQuery` to update state in handling the resolved promise.
 
