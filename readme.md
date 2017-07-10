@@ -8,9 +8,13 @@
 * Use jQuery to make AJAX calls in a React app
 * Describe ways to add styles to a React app
 
-## Framing (20 minutes / 0:20)
+## Framing
 
-### [Components](https://facebook.github.io/react/docs/components-and-props.html)
+Today's lesson will revolve building an app called React TVMaze. This process will be broken up into multiple exercises. Prior to each exercise, we will either dive deeper into React concepts you have already learned or explore new ones.
+
+But before we start coding, let's talk about the fundamental unit of any React app...
+
+## [Components](https://facebook.github.io/react/docs/components-and-props.html) (10 minutes / 0:10)
 
 Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
 
@@ -114,7 +118,7 @@ Let's look at the process of a rendering a React Component...
 
 ![](./react-render.png)
 
-## Break (10 minutes / 0:40)
+## Break
 
 ## Exercise: React TVMaze
 
@@ -124,41 +128,77 @@ The desired outcome is for you to take a look at the solution and from there dev
 
 Go ahead and clone [React TVMaze](https://github.com/ga-wdi-exercises/react-tvmaze/) now. This will be the code we start with.
 
-### [Start with a Mock](https://facebook.github.io/react/docs/thinking-in-react.html#start-with-a-mock)
+```bash
+$ git clone git@github.com:ga-wdi-exercises/react-tvmaze.git
+$ cd react-tvmaze
+$ npm install
+$ npm run start
+```
+
+## [Start with a Mock](https://facebook.github.io/react/docs/thinking-in-react.html#start-with-a-mock)
 
 First step in creating a React app is to start with a mock and some sample data.
 
-These are the two views for our app...
+### You Do: Identify Components (10 minutes)
 
-#### The Search Page
+> 5 minutes exercise. 5 minutes review.
 
-![search page](https://cloud.githubusercontent.com/assets/7882341/26462830/5af1a1ce-4150-11e7-9870-eb45ee12816a.png)
+Look at this [deployed version of the application](http://react-tvmaze.surge.sh/) and answer the following questions...
+- How many "views" does the application have?
+- What components does this application have?
+- Which components belong to which states?
 
-Here we've identified two components on the search page...
-1. The top level component, which we'll call `Home`, is boxed in magenta.
-2. The search input, a sub-component of `Home`, in yellow we'll call `Search`.
+### Views
 
-#### The Results Page
+<details>
+  <summary><strong>Open to see views and components...</strong></summary>
 
-![results page](https://cloud.githubusercontent.com/assets/7882341/26462829/5aee3d7c-4150-11e7-89cd-5bcd4147f3bc.png)
+  <br>
 
-Here we've identified three components on this page...
-1. The same `Home` top level component.
-2. A `results` components which contains results and an option to search again.
-3. The individual results
+  <h4>The Search View</h4>
 
-#### Component Hierarchy
+  ![search page](https://cloud.githubusercontent.com/assets/7882341/26462830/5af1a1ce-4150-11e7-9870-eb45ee12816a.png)
 
-Given these breakdowns we have a component hierarchy that looks like...
+  Here we've identified two components on the search page...
+  1. The top level component, which we'll call `Home`, is boxed in magenta.
+  2. The search input, a sub-component of `Home`, in yellow we'll call `Search`.
 
-- `Home`
-  - `Search`
-  - `Results`
-    - `Result`
+  <h4>The Results View</h4>
 
-##### Sample Data
+  ![results page](https://cloud.githubusercontent.com/assets/7882341/26462829/5aee3d7c-4150-11e7-89cd-5bcd4147f3bc.png)
 
-Here is some hard-coded data that we can use to begin building our application...
+  Here we've identified three components on this page...
+  1. The same `Home` top level component.
+  2. A `results` components which contains results and an option to search again.
+  3. The individual results
+
+</details>
+
+<br>
+
+<details>
+  <summary><strong>Open to see view-component hierarchy...</strong></summary>
+
+  <br>
+
+  <h4>Component Hierarchy</h4>
+
+  Given these breakdowns we have a component hierarchy that looks like...
+
+  - `Home`
+    - `Search`
+    - `Results`
+      - `Result`
+
+</details>
+
+<br>
+
+### Sample Data
+
+The final application will use jQuery to communicate with the TVMaze API. To start with, however, we are going to feed the application some hard-coded data.
+
+The below Javascript will go in our `index.js` file and will later be passed into our `Home` component as props...
 
 ```js
 const results = [
@@ -199,26 +239,68 @@ const results = [
     "image":"http://static.tvmaze.com/uploads/images/medium_portrait/57/143508.jpg"
   },
   {
-    "name":"Utenai Keikan","image":"http://static.tvmaze.com/uploads/images/medium_portrait/42/106093.jpg"
+    "name":"Utenai Keikan",
+    "image":"http://static.tvmaze.com/uploads/images/medium_portrait/42/106093.jpg"
   }
 ]
 ```
 
-### [Build a Static Version of the App](https://facebook.github.io/react/docs/thinking-in-react.html#step-2-build-a-static-version-in-react)
+### You Do: [Build a Static Version of the App](https://facebook.github.io/react/docs/thinking-in-react.html#step-2-build-a-static-version-in-react) (30 minutes)
+
+> 20 minutes exercise. 10 minutes review.
 
 First we will build a static version of the app passing all of our data by `props`. This makes it much easier to avoid getting bogged down in tricky details of functionality while implementing the visual appearance of the UI.
 
-1. [Home component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/4446eb64dd7fb80dacf263b06f793ef092b8fe74)
-2. [Search component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/345ec65715d5840e43de9c526b32041568754d0f)
-3. [Results component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/8ab1c601e3b15c69ff5cfb7f958124ec68cef9db)
+Create these three components in the following order...
 
-> Home should be passed two props for the static version of this app: `shows` and `hasSearched`.
+#### [Home](https://github.com/ga-wdi-exercises/react-tvmaze/commit/4446eb64dd7fb80dacf263b06f793ef092b8fe74)
+
+- Instead of creating a brand new component, we can rename `App` in all the relevant places so that it is called `Home`
+- The UI of the `Home` component should be very simple for the time being -- a `<div>` that contains a `<h1>` tag
+- If you have not already, paste the sample data in `index.js` right below the `import` statements
+- In `index.js`' `ReactDOM.render` statement, make sure to pass in the sample data as props to `<Home />` using a `shows` attribute
+
+#### [Search](https://github.com/ga-wdi-exercises/react-tvmaze/commit/345ec65715d5840e43de9c526b32041568754d0f)
+
+- Create a new `Search` component
+- The UI of `Search` should be a div that contains a form with an input field and a submit button
+- In `Home.js`, import `Search` and include it in the `Home` UI (i.e., it should contain `<Search />` somewhere)
+
+#### [Results](https://github.com/ga-wdi-exercises/react-tvmaze/commit/8ab1c601e3b15c69ff5cfb7f958124ec68cef9db)
+
+In a new `Results.js` file...
+- Define a `Results` component
+- For the time being, it's UI should only render a `<div>`
+
+In `index.js`...
+- In `ReactDOM.render`, update `<Home shows={shows}/>` so that it also takes a `hasSearched` attribute set to `false`
+
+In `Home.js`...
+- Import `Results`
+- Let's implement some conditional rendering in the `Home` UI...
+  - If `this.props.hasSearched` is false, render `<Search />`
+  - If `this.props.hasSearched` is true, render `<Results shows={this.props.shows}/>`
+
+> [Documentation on conditional rendering in React](https://facebook.github.io/react/docs/conditional-rendering.html)
+
+Back in `Results.js`...
+- In `render` but before the `return` statement, define a `results` variable.
+- This `results` variable will contain the product of `this.props.shows.map` (i.e., a map statement being called on our sample data)
+- Each iteration of the `.map` statement should return a `<div>`
+- Each `<div>` should include...
+  - An `<img>` that sources the image URL included in the sample data
+  - A `<p>` that displays the show name included in the sample data
+- Update the `Results` UI so that it displays whatever is stored in the `results` variable, which at this point should be an array of `<div>`s
+
+#### CSS (Optional)
+
+- Create stylesheets for each component, making sure to import them at the top of the page
+- You can use the CSS found in the component solutions: [Home](https://github.com/ga-wdi-exercises/react-tvmaze/commit/4446eb64dd7fb80dacf263b06f793ef092b8fe74), [Search](https://github.com/ga-wdi-exercises/react-tvmaze/commit/345ec65715d5840e43de9c526b32041568754d0f) and [Results](https://github.com/ga-wdi-exercises/react-tvmaze/commit/8ab1c601e3b15c69ff5cfb7f958124ec68cef9db)
+  - If you do so, make sure to include the correct CSS classes in your component UIs
 
 ## Break (10 minutes)
 
-## Sync Up (20 minutes)
-
-### [Identify the Minimal Representation of UI State](https://facebook.github.io/react/docs/thinking-in-react.html#step-3-identify-the-minimal-but-complete-representation-of-ui-state)
+## [Identify the Minimal Representation of UI State](https://facebook.github.io/react/docs/thinking-in-react.html#step-3-identify-the-minimal-but-complete-representation-of-ui-state)
 
 For our app to work we need...
 - `movies` (movies to show)
@@ -229,7 +311,7 @@ All of these are subject to change over time and so each must be kept in state.
 
 ### [Identify Where Your State Should Live](https://facebook.github.io/react/docs/thinking-in-react.html#step-4-identify-where-your-state-should-live)
 
-Central to considering where state lives is the idea of **one way data flow**. The react documentation describes this step as "often the most challenging part for newcomers to understand".
+Central to considering where state lives is the idea of **one way data flow**. The React documentation describes this step as "often the most challenging part for newcomers to understand".
 
 Our task here is to look for the component for each aspect of state that could be the one place where that state is managed.
 
@@ -307,8 +389,6 @@ To add the finishing touches to our application, let's take a stab at styling ou
 
 - What are some struggles you encountered when building out a more complex React app for the first time?
 - What are some good rules of thumb to help keep components maintainable?
-
----
 
 ## Resources
 
