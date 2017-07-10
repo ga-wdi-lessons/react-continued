@@ -405,8 +405,24 @@ Let's first illustrate this concept by defining an `onSubmitQuery` method. For n
 
 #### In `SearchContainer.js`...
 
-- Define an `onSubmitQuery` method in the component definition. It should use `.setState` to set `hasSearched` to `true`.
-- Because this method will be triggered when the user interacts with the `Search` component, we need to pass `onSubmitQuery` down to `Search` via props. We can do this with methods similarly to how we pass down data values...
+Define an `onSubmitQuery` method in the component definition. It should use `.setState` to set `hasSearched` to `true`.
+
+```js
+class SearchContainer extends Component {
+  // ...
+  onSubmitQuery(e) {
+    e.preventDefault()
+    this.setState({
+      hasSearched: true
+    })
+  }
+  // ...
+}
+```
+
+> Because the method will be trigger by a submit event, the `e` parameter is automatically populated with an event object.
+
+Because this method will be triggered when the user interacts with the `Search` component, we need to pass `onSubmitQuery` down to `Search` via props. We can do this with methods similarly to how we pass down data values...
 
 ```js
 class SearchContainer extends Component {
@@ -438,10 +454,19 @@ class SearchContainer extends Component {
 Now we have to update the `Search` UI so that when a search is submitted, the view is switched from `Search` to `Results`. In this situation that means triggering the previously-defined `onSubmitQuery` method, which we have passed down from `SearchContainer` via props...
 
 ```js
-// In progress...
+class Search extends Component {
+  render() {
+    return (
+      <form onSubmit={this.props.onSubmitQuery}>
+        <input type="text" placeholder="Enter search term" />
+        <button type="submit">Submit</button>
+      </form>
+    )
+  }
+}
 ```
 
-#### [SearchContainer component](https://github.com/ga-wdi-exercises/react-tvmaze/commit/1c896c5a975ea9d1f6fd07bbd655caf1d1f9f9ae)
+When your done with this section, [your code should look something like this](https://github.com/ga-wdi-exercises/react-tvmaze/tree/07a579736dd40488dbab943c695e329ab61ae2ba).
 
 ## Replace Mock Data with an AJAX Request (10 minutes / 2:30)
 
