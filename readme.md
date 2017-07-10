@@ -260,6 +260,7 @@ Create these three components in the following order...
 
 #### In `index.js`...
 
+- Replace any references to `App` in this file with `Home`
 - If you have not already, paste the sample data in `index.js` right below the `import` statements
 - In the `ReactDOM.render` statement, make sure to pass in the sample data as props to `<Home />` using a `shows` attribute
 
