@@ -143,8 +143,8 @@ First step in creating a React app is to start with a mock and some sample data.
 
 Look at this [deployed version of the application](http://react-tvmaze.surge.sh/) and answer the following questions...
 - How many "views" does the application have?
-- What components does this application have?
-- Which components belong to which states?
+- What components is this application comprised of?
+- Which components belong to which views?
 
 ### Views
 
